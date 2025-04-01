@@ -1,0 +1,50 @@
+html {
+    background-color: #333;
+}
+.navbar-container {
+    background-color: #333;
+    position: fixed;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+}
+.navbar {
+    align-items: center;
+    height: 50px;
+}
+
+ul .navbar {
+    list-style-type: none;
+    background-color: #333;
+}
+
+li.navbar {
+    float: left;
+}
+
+li.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.navbar a:hover:not(.active) {
+    background-color: #111;
+}
+
+li img {
+    width: 150px;
+}
+
+li.navbar.about {
+    background-color: #06ae03;
+    float: right;
+}
+div .main_container {
+    background-color: #333;
+    width: 80vw;
+    margin: 50px;
+}
