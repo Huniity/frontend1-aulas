@@ -1,5 +1,28 @@
 html {
     background-color: #333;
+    background-image: url('./images/bg.png');
+    background-repeat: inherit;
+    background-size: cover;
+}
+body { 
+    font-family: 'Orbitron', sans-serif;
+    margin: 0 auto;
+}
+main {
+    margin: 0 auto;
+}
+.main_container {
+    background-color: #221f1f;
+    width: 70vw;
+    margin: 150px;
+    position: absolute;
+    border-width:2px;
+    border-style:solid;
+    border-color:black;
+    border-radius: 5px;
+    color: white;
+    font-size:x-large;
+    box-shadow: #111;
 }
 .navbar-container {
     background-color: #333;
@@ -38,13 +61,7 @@ li.navbar a:hover:not(.active) {
 li img {
     width: 150px;
 }
-
 li.navbar.about {
     background-color: #06ae03;
     float: right;
-}
-div .main_container {
-    background-color: #333;
-    width: 80vw;
-    margin: 50px;
 }
