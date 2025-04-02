@@ -1,55 +1,61 @@
 html {
-    background-color:white;
-    background-image: url('./images/bg.png');
-    background-repeat: inherit;
-    background-size: cover;
+    background-image: url('../images/background3.jpeg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color:#ffffff;
+    
 }
+.fade-overlay {
+    position:absolute;
+    top: 1190px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,#ffffff 75%);
+    pointer-events: none;
+}
+
 body { 
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Outfit", sans-serif;
     margin: 0 auto;
 }
-/* main {
-
-} */
 .main_container {
-    background-color: #221f1f;
-    width: 70vw;
-    margin: 150px;
-    position: absolute;
+    max-width: 100%; 
+}
+.container div {
+    position: relative;
+    padding: 20px;
+    background-color: #ffffffc3;
+    border: 1px solid #ccc;
+    height: 1000px;
+    margin: 300px 50px;
     border-width:2px;
     border-style:solid;
-    border-color:black;
+    border-color:rgba(89, 89, 89, 0.218);
     border-radius: 5px;
-    color: white;
-    font-size:x-large;
-    box-shadow: #111;
-    grid-column: span 3;
-}
-.container > div {
-    padding: 20px;
-    background-color: #221f1f;
-    border: 1px solid #ccc;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+}
+.container > div.api_div img {
+    width: 100%;
 }
 .navbar-container {
-    background-color: #333;
-    position: fixed;
-    width: 100vw;
+    display:flex;
+    background-color: #ffffff;
+    position: absolute;
+    width: 100%;
     margin: 0;
     padding: 0;
     height: 80px;
 }
-/* .navbar {
-    height: 80px;
-} */
-
 ul .navbar {
     list-style-type: none;
-    background-color: #333;
+    background-color: #ffffff;
 }
 
 li.navbar {
@@ -58,21 +64,30 @@ li.navbar {
 
 li.navbar a {
     display: block;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
-    padding: 14px 16px;
+    padding-inline: 10px;
     text-decoration: none;
-}
+    font-size: x-large;
 
-li.navbar a:hover:not(.active) {
-    background-color: #06ae03;
 }
-
+li.navbar a:hover{
+    color: #06ae03;
+    transition: 0.5s;
+}
 li img {
-    width: 150px;
+    width: 25px;
 }
-li.navbar.about {
-    background-color: #06ae03;
+li.navbar.right {
     float: right;
-    margin-right: 50px;
+    
+}
+.footer_container {
+    bottom: 100%;
+    background-color: #ffffff;
+    position: sticky;
+    height: 80px;
+    text-align: center;
+    font-size: smaller;
+    padding-top: 50px;
 }
