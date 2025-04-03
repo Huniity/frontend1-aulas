@@ -17,7 +17,7 @@ const post_list = [post]
 
 const navbar_menu = [
     {
-        title: "Home",
+        title: "The Padel Social Club",
         url: "/",
     },
     {
@@ -36,6 +36,4 @@ const navbar_menu = [
         title: "About",
         url: "/about",
     }
-
-
 ]
