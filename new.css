@@ -1,11 +1,23 @@
-body {
+body{
     background-color: #181818;
     color: white;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #181818;
     font-family: "Anton", sans-serif;
     letter-spacing: 0.75px;
     margin: 0;
     padding: 0;
 
+}
+.light-mode{
+    background-color: #b4b4b4;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #181818;
+    font-family: "Anton", sans-serif;
+    letter-spacing: 0.75px;
+    margin: 0;
+    padding: 0;
 }
 .navbar {
     position: fixed;
@@ -59,7 +71,7 @@ body {
     
 }
 .sidebar {
-    height: 500px;
+    height: 650px;
     background: rgba(0, 0, 0, 0);
     padding: 20px;
     border-radius: 10px;
@@ -139,7 +151,7 @@ button {
     margin-top: 10px;
     cursor: pointer;
 }
-.comment-box input {
+.post_input {
     width: 100%;
     padding: 8px 0px 8px 0px;
     border-radius: 5px;
@@ -147,8 +159,15 @@ button {
     background: #444;
     color: white;
 }
+.post_list {
+    background-color: #b4b4b4;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+
+}
 .right-sidebar {
-    height: 500px;
+    height: 650px;
     background-image: url("./images/player.png");
     background-repeat: inherit;
     background-size: cover;
@@ -180,4 +199,14 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.footer_container {
+    bottom: 100%;
+    background-color: #222222;
+    position: sticky;
+    height: 80px;
+    text-align: center;
+    font-size: smaller;
+    padding-top: 50px;
 }

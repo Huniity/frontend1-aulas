@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <title>The Padel Social Club</title>
     <link rel="stylesheet" href="new.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -25,6 +27,7 @@
         <div class="nav-icons">
             <span>Sign In</span>
             <span>Sign Up</span>
+            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
         </div>
     </nav>
     <div class="container">
@@ -65,26 +68,22 @@
                 </div>
             </header>
             <div class="post">
-                <div class="user-info">
-                    <img src="user.jpg" alt="User">
-                    <div>
-                        <p>Eduardo Beldade</p>
-                        <p>Adrien & Jorge VS Leo & Gonçalo</p>
-                    </div>
-                </div>
-                <p>6/2 - 2/6 - 7/2 (6/6)</p>
-                <img src="padel-match.jpg" alt="Padel Match Result">
-                <hr>    
-                <div class="comment-box">
-                    <input type="text" placeholder="Write your comment...">
-                </div>
-                <button class="save-btn">Post!</button>
+                    <div id="posts-container"></div>        
             </div>
         </main>
 
         <!-- Right Sidebar - Recent Activity -->
         <aside class="right-sidebar">
             <h3>Recent Activity</h3>
+            <div id="user-info"></div>
+            <div id="user-email"></div>
+            <form id="user-form">
+                <label for="name">Username:</label><br>
+                <input type="text" placeholder="Insert your name here" id="user-name">
+                <button type="submit" id="submit-user">Submit!</button>
+            </form>
+            <div id="user-submited"></div>
+            <br>
             <ul>
                 <li>
                     <img src="./images/user.png" alt="User">
@@ -99,4 +98,14 @@
             </ul>
         </aside>
     </div>
-</body
+        <footer>
+            <div class="footer_container">
+                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>                
+            </div>
+        </footer>
+    <script src="scripts/scripts.js" defer></script>
+    <script src="scripts/posts.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/dark_light_toggle.js" defer></script>
+</body>
+</html>
