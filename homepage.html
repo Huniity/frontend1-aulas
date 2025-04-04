@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <!-- https://prismic.io/blog/css-text-animations -->
 <head>
     <title>Padel Social Club</title>
     <link rel="icon" href="./images/favicon.png" type="image/x-icon">
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="./styles/styles.css"> -->
     <link rel="stylesheet" href="./scripts/scripts.js">
+    <!-- <link rel="stylesheet" href="./scripts/ball.js"> -->
     <link rel="stylesheet" href="./exo/exo1.js">
     <meta name="author" content="Adrien Dejonc">
     <meta name="portfolio" content="my portfolio">
@@ -20,14 +21,13 @@
 <body>
     <nav class="navbar">
         <div class="nav-icons">
-            <p>Ready for the Match?</p>
+            Ready for the Match?
         </div>
     </nav>
     <main>
         <header>
 
         </header>
-
         <div class="container">
             <div class="welcome">
                 <p class="welcome_title">The Padel Social Club</p>
@@ -53,12 +53,12 @@
         font-style: normal;
     }
     .navbar {
-        font-size: 75px;
+    font-size: 40px;
     position: fixed;
     top: 0;
-    left: 0;
+    margin-left: 75%;
     width: 100%;
-    background-color: #181818;
+    background-color: #18181800;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,7 +69,7 @@
     .welcome {
         position: absolute;
         top: 35%;
-        left: 30%;
+        left: 25%;
         margin-top: -50px;
         margin-left: -50px;
         -webkit-animation: bounce-in-top 4s;
@@ -96,7 +96,7 @@
         /* Increased width */
         height: 75px;
         /* Increased height */
-        background: #f5ec4d;
+        background: #d6f54d;
         border-radius: 50%;
         transform: translate(-15%, -15%);
         overflow: hidden;
@@ -289,4 +289,7 @@
             animation-timing-function: ease-out;
         }
     }
+
+    /*  */
+
 </style>
