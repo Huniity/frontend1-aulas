@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     }
   
-    form?.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
   
       const user_name = document.getElementById("user_name").value;
