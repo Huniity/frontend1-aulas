@@ -8,11 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <title>The Padel Social Club</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/styles/index.css">
+
 </head>
 
 <body>
-    <!-- Navbar -->
+
     <nav class="navbar">
         <div class="logo">
             <div class="small-center">
@@ -57,31 +58,43 @@
             </div>
         </aside>
 
-        <!-- Main Feed -->
+
         <main class="feed">
-            <span>The Social</span>
-            <span>Marketplace</span>
-            <span>Padel Premier</span>
+            <div class="feed-menu">
+                <span>The Social 🌐</span>
+                <span>Marketplace 🛒</span>
+                <span>Padel Premier 🏆</span>
+            </div>
             <header class="top-bar">
                 <input type="text" placeholder="Search matches, players, clubs.">
                 <div class="icons">
                 </div>
             </header>
-            <div class="post">
-                    <div id="posts-container"></div>        
-            </div>
+            <hr>
+            <h3 style="text-align: center;">How did you perform in your last game?</h3>
+            <form id="match-form">
+                <input type="text" id="user_name" placeholder="Team Captain" required />
+                <input type="text" id="match" placeholder="Team 1 VS Team 2" required />
+                <input type="text" id="result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                <select id="match_result" required>
+                    <option value="">End Result</option>
+                    <option value="🏆">🏆 Victory</option>
+                    <option value="💔">💔 Loss</option>
+                </select>
+                <button type="submit">Send your results!</button>
+            </form>
+            <br>
+            <hr>
+            <br>
+            <h2>Your posted games ✅</h2>
+            <div id="match-list"></div>
         </main>
 
-        <!-- Right Sidebar - Recent Activity -->
+
         <aside class="right-sidebar">
-            <h3>Recent Activity</h3>
+            <h3>Recent Activity 🎯</h3>
             <div id="user-info"></div>
             <div id="user-email"></div>
-            <form id="user-form">
-                <label for="name">Username:</label><br>
-                <input type="text" placeholder="Insert your name here" id="user-name">
-                <button type="submit" id="submit-user">Submit!</button>
-            </form>
             <div id="user-submited"></div>
             <br>
             <ul>
@@ -98,14 +111,14 @@
             </ul>
         </aside>
     </div>
-        <footer>
-            <div class="footer_container">
-                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>                
-            </div>
-        </footer>
-    <script src="scripts/scripts.js" defer></script>
+    <footer>
+        <div class="footer_container">
+            <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
+        </div>
+    </footer>
     <script src="scripts/posts.js" defer></script>
-    <script src="scripts/main.js" defer></script>
+    <script src="scripts/loading.js" defer></script>
     <script src="scripts/dark_light_toggle.js" defer></script>
 </body>
+
 </html>
