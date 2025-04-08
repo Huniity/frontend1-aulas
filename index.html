@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <title>The Padel Social Club</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="small-center">
+                <div class="small-ball"></div>
+                <div class="small-shadow"></div>
+            </div>
+            <h1>The Padel Social Club</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for matches, players, clubs...">
+        </div>
+        <div class="nav-icons">
+            <span>Sign In</span>
+            <span>Sign Up</span>
+            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="./images/user.png" alt="User Profile">
+                <h2>Adrien Dejonc</h2>
+                <p>@Adrien</p>
+                <p>🎾 M1 Player! Right Handed, Right Side. Adidas Ambassador 🔥</p>
+                <button>My Profile</button>
+            </div>
+            <div class="skills">
+                <h3>Stats</h3>
+                <div class="skill-tags">
+                    <span>🏆 12 Wins</span>
+                    <span>🥎 25 Matches</span>
+                    <span>🔥 Top 3 World</span>
+                    <span>🎾 Metalbone HRD3+</span>
+                </div>
+            </div>
+            <div class="communities">
+                <h3>Clubs & Groups</h3>
+                <ul>
+                    <li>Padel by Stop Faro</li>
+                    <li>Academia Padel E. Beldade</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Feed -->
+        <main class="feed">
+            <span>The Social</span>
+            <span>Marketplace</span>
+            <span>Padel Premier</span>
+            <header class="top-bar">
+                <input type="text" placeholder="Search matches, players, clubs.">
+                <div class="icons">
+                </div>
+            </header>
+            <div class="post">
+                    <div id="posts-container"></div>        
+            </div>
+        </main>
+
+        <!-- Right Sidebar - Recent Activity -->
+        <aside class="right-sidebar">
+            <h3>Recent Activity</h3>
+            <div id="user-info"></div>
+            <div id="user-email"></div>
+            <form id="user-form">
+                <label for="name">Username:</label><br>
+                <input type="text" placeholder="Insert your name here" id="user-name">
+                <button type="submit" id="submit-user">Submit!</button>
+            </form>
+            <div id="user-submited"></div>
+            <br>
+            <ul>
+                <li>
+                    <img src="./images/user.png" alt="User">
+                    <p>Chris joined your club <span>5 min ago</span></p>
+                    <button>Check the club!</button>
+                </li>
+                <li>
+                    <img src="./images/user.png" alt="User">
+                    <p>Sarah followed you <span>10 min ago</span></p>
+                    <button>Follow Back</button>
+                </li>
+            </ul>
+        </aside>
+    </div>
+        <footer>
+            <div class="footer_container">
+                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>                
+            </div>
+        </footer>
+    <script src="scripts/scripts.js" defer></script>
+    <script src="scripts/posts.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/dark_light_toggle.js" defer></script>
+</body>
+</html>

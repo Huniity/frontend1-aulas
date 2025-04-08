@@ -60,21 +60,30 @@
 
 
         <main class="feed">
-            <span>The Social</span>
-            <span>Marketplace</span>
-            <span>Padel Premier</span>
+            <div class="feed-menu">
+                <span>The Social 🌐</span>
+                <span>Marketplace 🛒</span>
+                <span>Padel Premier 🏆</span>
+            </div>
             <header class="top-bar">
                 <input type="text" placeholder="Search matches, players, clubs.">
                 <div class="icons">
                 </div>
             </header>
-            <form id="add-post-form" style="display: flex; flex-direction: column; gap: 1rem">
-                <input type="text" name="user_name" placeholder="Post Username"/>
-                <input type="text" name="match" placeholder="Your Match"/>
-                <input type="text" name="result" placeholder="Match Result"/>
-                <input type="text" name="match_result" placeholder="Match Emoji"/>
-                <button type="submit">Add Post</button>
-            </form>
+            <form id="match-form">
+                <input type="text" id="user_name" placeholder="Team Captain" required />
+                <input type="text" id="match" placeholder="Team 1 VS Team 2" required />
+                <input type="text" id="result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                <select id="match_result" required>
+                  <option value="">End Result</option>
+                  <option value="🏆">🏆 Victory</option>
+                  <option value="💔">💔 Loss</option>
+                </select>
+                <button type="submit">Send your results!</button>
+              </form>
+            
+              <h2>Your posted games ✅</h2>
+              <div id="match-list"></div>
             <div class="post">
                 <div id="posts-container"></div>
             </div>
@@ -82,14 +91,9 @@
 
 
         <aside class="right-sidebar">
-            <h3>Recent Activity</h3>
+            <h3>Recent Activity 🎯</h3>
             <div id="user-info"></div>
             <div id="user-email"></div>
-            <form id="user-form">
-                <label for="name">Username:</label><br>
-                <input type="text" placeholder="Insert your name here" id="user-name">
-                <button type="submit" id="submit-user">Submit!</button>
-            </form>
             <div id="user-submited"></div>
             <br>
             <ul>
@@ -111,11 +115,7 @@
             <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
         </div>
     </footer>
-    <script src="scripts/scripts.js" defer></script>
-    <script src="scripts/add_post.js" defer></script>
     <script src="scripts/posts.js" defer></script>
-    <script src="scripts/main.js" defer></script>
     <script src="scripts/dark_light_toggle.js" defer></script>
 </body>
-
 </html>
