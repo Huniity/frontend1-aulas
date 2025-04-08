@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <title>SignUp - The Padel Social Club</title>
+    <link rel="stylesheet" href="/styles/index.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="small-center">
+                <div class="small-ball"></div>
+                <div class="small-shadow"></div>
+            </div>
+            <h1>The Padel Social Club</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for matches, players, clubs...">
+        </div>
+        <div class="nav-icons">
+            <span>Sign In</span>
+            <span>Sign Up</span>
+            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+        </div>
+    </nav>
+    <div class="container">
+        <main class="feed">
+            <div class="feed-menu">
+                <span>The Social 🌐</span>
+                <span>Marketplace 🛒</span>
+                <span>Padel Premier 🏆</span>
+            </div>
+            <header class="top-bar">
+                <input type="text" placeholder="Search matches, players, clubs.">
+                <div class="icons">
+                </div>
+            </header>
+            <hr>
+            <h3 style="text-align: center;">User Sign-Up</h3>
+            <form id="match-form">
+                <input type="text" id="user_name" placeholder="Insert your User Name" required />
+                <input type="text" id="fname" placeholder="Insert your First Name" required />
+                <input type="text" id="lname" placeholder="Insert your Last Name" required />
+                <input type="text" id="password" placeholder="Insert your Password" required />
+                <input type="text" id="lname" placeholder="Insert your Last Name" required />
+                <select id="hand_option" required>
+                    <option value="">Main Hand</option>
+                    <option value="👋">👋 Left</option>
+                    <option value="👋">👋 Right</option>
+                </select>
+                <button type="submit">Send your results!</button>
+            </form>
+            <br>
+            <hr>
+            <br>
+        </main>
+    </div>
+    <footer>
+        <div class="footer_container">
+            <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
+        </div>
+    </footer>
+</body>
+
+</html>
