@@ -1,7 +1,6 @@
 
 import { getPosts, createPost, editPost, deletePost } from "../lib/mock_api.js";
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const posts = await getPosts();
     console.log(posts);
