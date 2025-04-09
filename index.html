@@ -86,8 +86,24 @@
                 <hr>
                 <br>
             </form>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Edit Match</h2>
+                    <form id="edit-match-form">
+                        <input type="text" id="edit-match" placeholder="Team 1 VS Team 2" required />
+                        <input type="text" id="edit-result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                        <select id="edit-match_result" required>
+                            <option value="">End Result</option>
+                            <option value="🏆">🏆 Victory</option>
+                            <option value="💔">💔 Loss</option>
+                        </select>
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            <div id="match-list"></div>
             
-                <div id="match-list"></div>
         </main>
 
 
@@ -120,5 +136,47 @@
     <script src="./scripts/dark_light_toggle.js" defer></script>
     <script src="./scripts/posts_module.js" type="module" defer></script>
 </body>
+<style>
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
 
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+input, select  {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #f1c40f;
+    cursor: pointer;
+}
+</style>
 </html>

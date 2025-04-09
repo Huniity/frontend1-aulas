@@ -1,23 +1,151 @@
-
 import { getPosts, createPost, editPost, deletePost } from "../lib/mock_api.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const posts = await getPosts();
-    console.log(posts);
+// --------------- SEM MODAL ----------------- //
 
-    const postList = document.getElementById("match-form");
-    posts.forEach((post) => {
+
+// const formatDate = (isoString) => {
+//     const date = new Date(isoString);
+//     return new Intl.DateTimeFormat("pt-PT", {
+//         day: "2-digit",
+//         month: "2-digit",
+//         year: "numeric",
+//         hour: "2-digit",
+//         minute: "2-digit",
+//     }).format(date);
+// };
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//     const postList = document.getElementById("match-list");
+
+//     const renderPost = (post) => {
+//         const postItem = document.createElement("div");
+//         postItem.classList.add("post");
+//         postItem.innerHTML = `
+// <div class="post-container" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative;">
+//     <div class="user-info" style="display: flex; align-items: center;">
+//         <img src="${post.avatar}" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+//         <h2 style="margin: 0;">${post.user_name}</h2>
+//     </div>
+//     <div class="dropdown" style="position: absolute; right: 0; top: 0; padding: 5px;">
+//         <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
+//         <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+//             <span><a href="#" class="edit-post" style="display: block; padding: 10px;">
+//                 <img class="ico" src="../images/editing.png" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 10px;">
+//             </a></span>
+//             <span><a href="#" class="delete-post" style="display: block; padding: 10px;">
+//                 <img class="ico" src="../images/delete.png" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 10px;">
+//             </a></span>
+//         </div>
+//     </div>
+// </div>
+
+// <div class="post-content" style="padding: 0 0 0 50px;">
+//     <p>${post.match}</p>
+//     <p>${post.result}</p>
+//     <p>${post.match_result}</p>
+//     <p>${formatDate(post.created_at)}</p>
+// </div>
+
+// <div class="comment-section" style="margin-top: 20px;">
+//     <input type="text" style="margin-bottom: 7.5px; padding: 10px 0 10px 0; width: 100%; border: 0px solid #ccc; border-radius: 5px; background-color: #f1f1f1; box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;" placeholder="Write your comment">
+//     <button type="submit" style="padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; color: #1e1e1e; background-color: #f1c40f;">Post!</button>
+// </div>
+//         `;
+//         postList.append(postItem);
+
+//         const dropdownButton = postItem.querySelector('.dropdown-button');
+//         const dropdownContent = postItem.querySelector('.dropdown-content');
+//         dropdownButton.addEventListener('click', () => {
+//             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+//         });
+
+//         const editButton = postItem.querySelector('.edit-post');
+//         editButton.addEventListener('click', async () => {
+//             const updatedPostData = {
+//                 match: "Updated Match",
+//                 result: "Updated Result",
+//                 match_result: "Updated Match Result",
+//             };
+//             const updated = await editPost(post.id, updatedPostData);
+//             console.log('Post updated:', updated);
+//             location.reload();
+//         });
+
+//         const deleteButton = postItem.querySelector('.delete-post');
+//         deleteButton.addEventListener('click', async () => {
+//             const confirmDelete = confirm("Are you sure you want to delete this post?");
+//             if (confirmDelete) {
+//                 await deletePost(post.id);
+//                 postItem.remove();
+//             }
+//         });
+//     };
+
+//     const posts = await getPosts();
+//     posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+//     posts.forEach(renderPost);
+
+//     const form = document.getElementById("match-form");
+//     form.addEventListener("submit", async (e) => {
+//         e.preventDefault();
+
+//         const user_name = document.getElementById("user_name").value;
+//         const match = document.getElementById("match").value;
+//         const result = document.getElementById("result").value;
+//         const match_result = document.getElementById("match_result").value;
+
+//         const newPost = {
+//             user_name,
+//             match,
+//             result,
+//             match_result,
+//             created_at: new Date().toISOString(),
+//             avatar: "https://placehold.co/600x400/orange/white"
+//         };
+
+//         const postedData = await createPost(newPost);
+//         renderPost(postedData);
+//         form.reset();
+//     });
+// });
+
+
+// --------------- COM MODAL ----------------- //
+
+
+const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return new Intl.DateTimeFormat("pt-PT", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+    }).format(date);
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const postList = document.getElementById("match-list");
+    const form = document.getElementById("match-form");
+
+    const editModal = document.getElementById("editModal");
+    const closeModalBtn = document.querySelector(".close-btn");
+    const editMatchInput = document.getElementById("edit-match");
+    const editResultInput = document.getElementById("edit-result");
+    const editMatchResultInput = document.getElementById("edit-match_result");
+    const editForm = document.getElementById("edit-match-form");
+
+    let currentEditPostId = null;
+
+    const renderPost = (post, prepend = false) => {
         const postItem = document.createElement("div");
         postItem.classList.add("post");
         postItem.innerHTML = `
 <div class="post-container" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative;">
-    <!-- Avatar and User Information Section -->
     <div class="user-info" style="display: flex; align-items: center;">
         <img src="${post.avatar}" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
         <h2 style="margin: 0;">${post.user_name}</h2>
     </div>
-    
-    <!-- Dropdown for Edit/Delete -->
     <div class="dropdown" style="position: absolute; right: 0; top: 0; padding: 5px;">
         <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
         <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
@@ -31,21 +159,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     </div>
 </div>
 
-<!-- Post Content Section -->
 <div class="post-content" style="padding: 0 0 0 50px;">
     <p>${post.match}</p>
     <p>${post.result}</p>
     <p>${post.match_result}</p>
-    <p>${post.created_at}</p>
+    <p>${formatDate(post.created_at)}</p>
 </div>
 
-<!-- Comment Section -->
 <div class="comment-section" style="margin-top: 20px;">
-    <input type="text" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 5px; background-color: #f1f1f1; box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;" placeholder="Write your comment">
+    <input type="text" style="margin-bottom: 7.5px; padding: 10px 0 10px 0; width: 100%; border: 0px solid #ccc; border-radius: 5px; background-color: #f1f1f1; box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;" placeholder="Write your comment">
     <button type="submit" style="padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; color: #1e1e1e; background-color: #f1c40f;">Post!</button>
 </div>
         `;
-        postList.appendChild(postItem);
 
         const dropdownButton = postItem.querySelector('.dropdown-button');
         const dropdownContent = postItem.querySelector('.dropdown-content');
@@ -54,63 +179,83 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         const editButton = postItem.querySelector('.edit-post');
-        editButton.addEventListener('click', () => {
-            const updatedPostData = {
-                user_name: "Updated User",
-                match: "Updated Match",
-                result: "Updated Result",
-                match_result: "Updated Match Result",
-                created_at: new Date().toISOString(),
-                avatar: post.avatar
-            };
-            editPost(post.id, updatedPostData);
+        editButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentEditPostId = post.id;
+            editMatchInput.value = post.match;
+            editResultInput.value = post.result;
+            editMatchResultInput.value = post.match_result;
+            editModal.style.display = 'flex';
         });
 
-
         const deleteButton = postItem.querySelector('.delete-post');
-        deleteButton.addEventListener('click', async () => {
+        deleteButton.addEventListener('click', async (e) => {
+            e.preventDefault();
             const confirmDelete = confirm("Are you sure you want to delete this post?");
             if (confirmDelete) {
                 await deletePost(post.id);
                 postItem.remove();
-                console.log(postList)
             }
         });
-    });
 
+        if (prepend) {
+            postList.prepend(postItem);
+        } else {
+            postList.append(postItem);
+        }
+    };
 
-    const form = document.getElementById("match-form");
+    const posts = await getPosts();
+    posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    posts.forEach(post => renderPost(post));
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-
         const user_name = document.getElementById("user_name").value;
         const match = document.getElementById("match").value;
         const result = document.getElementById("result").value;
         const match_result = document.getElementById("match_result").value;
 
         const newPost = {
-            user_name: user_name,
-            match: match,
-            result: result,
-            match_result: match_result,
+            user_name,
+            match,
+            result,
+            match_result,
             created_at: new Date().toISOString(),
             avatar: "https://placehold.co/600x400/orange/white"
         };
 
         const postedData = await createPost(newPost);
-        console.log('New post created:', postedData);
-
-        const postItem = document.createElement("div");
-        postItem.classList.add("post");
-        postItem.innerHTML = `
-            <img src="${postedData.avatar}" alt="avatar"><br>
-            <h2>${postedData.user_name}</h2>
-            ${postedData.match}<br><br>
-            ${postedData.result}<br><br>
-            ${postedData.match_result}<br>
-            ${postedData.created_at}<br>
-        `;
-        postList.appendChild(postItem);
+        renderPost(postedData, true); // render no topo
         form.reset();
     });
+
+    // Modal - salvar alterações
+    editForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!currentEditPostId) return;
+
+        const updatedData = {
+            match: editMatchInput.value,
+            result: editResultInput.value,
+            match_result: editMatchResultInput.value,
+        };
+
+        await editPost(currentEditPostId, updatedData);
+        editModal.style.display = 'none';
+        location.reload(); // simples e eficaz por agora
+    });
+
+    // Modal - fechar
+    closeModalBtn.addEventListener("click", () => {
+        editModal.style.display = 'none';
+    });
+
+    // Fechar modal se clicar fora do conteúdo
+    window.addEventListener("click", (e) => {
+        if (e.target === editModal) {
+            editModal.style.display = 'none';
+        }
+    });
 });
+
