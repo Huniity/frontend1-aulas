@@ -143,17 +143,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         postItem.innerHTML = `
 <div class="post-container" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative;">
     <div class="user-info" style="display: flex; align-items: center;">
-        <img src="${post.avatar}" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <img src="${post.avatar}" alt="avatar" style="object-fit: cover; width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
         <h2 style="margin: 0;">${post.user_name}</h2>
     </div>
     <div class="dropdown" style="position: absolute; right: 0; top: 0; padding: 5px;">
         <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
         <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
-            <span><a href="#" class="edit-post" style="display: block; padding: 10px;">
-                <img class="ico" src="../images/editing.png" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 10px;">
+            <span><a href="#" class="edit-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
+                <img class="ico" src="../images/editing.png" style="width: 25px; height: 25px; vertical-align: middle">
             </a></span>
-            <span><a href="#" class="delete-post" style="display: block; padding: 10px;">
-                <img class="ico" src="../images/delete.png" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 10px;">
+            <span><a href="#" class="delete-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
+                <img class="ico" src="../images/delete.png" style="width: 25px; height: 25px; vertical-align: middle">
             </a></span>
         </div>
     </div>

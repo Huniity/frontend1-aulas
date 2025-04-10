@@ -81,7 +81,7 @@ a {
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.container {
+/* .container {
     display: flex;
     justify-content: space-between;
     margin-top: 100px;
@@ -96,7 +96,7 @@ a {
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+} */
 
 .profile_img {
     width: 100px;
@@ -160,13 +160,13 @@ button {
 }
 
 
-.feed {
+/* .feed {
     flex-grow: 1;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+} */
 
 .feed header {
     margin-bottom: 20px;
@@ -256,8 +256,24 @@ select {
     object-fit: cover;
 }
 
-.right-sidebar {
+/* .right-sidebar {
     width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+} */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 1/4, 2/4, 1/4 */
+    gap: 100px;  /* ajuste conforme necessário */
+    margin-top: 100px;
+    padding: 0 25px;
+}
+
+.sidebar,
+.right-sidebar,
+.feed {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -311,6 +327,44 @@ select {
     padding: 20px;
     position: relative;
     bottom: 0;
+}
+
+
+/* -------------- SIGNUP ------------- */
+
+.feed {
+    grid-column: 2;
+}
+    .signup-box {
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+                rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    text-align: center;
+}
+
+.signup-box h2 {
+    font-size: 26px;
+    color: #1e1e1e;
+    margin-bottom: 20px;
+}
+
+.signup-box input,
+.signup-box select {
+    margin-top: 15px;
+}
+
+.signup-box button {
+    margin-top: 25px;
+}
+
+.signup-box p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 15px;
 }
 
 
