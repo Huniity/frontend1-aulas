@@ -446,7 +446,7 @@ select {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .container {
         flex-direction: column;
     }
@@ -496,7 +496,7 @@ select {
         justify-content: space-evenly;
     }
 
-    .navbar .navbar_pc {
+    .navbar_pc {
         display: none;
     }
 
@@ -520,7 +520,6 @@ select {
         position: fixed;
         width: 100%;
         padding: 10px 0 0 0;
-        height: 60px;
         line-height: 1.2;
         justify-content: space-evenly;
         align-content: space-evenly;
