@@ -150,10 +150,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
         <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
             <span><a href="#" class="edit-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
-                <img class="ico" src="../images/editing.png" style="width: 25px; height: 25px; vertical-align: middle">
+                <img class="ico" src="./images/editing.png" style="width: 25px; height: 25px; vertical-align: middle">
             </a></span>
             <span><a href="#" class="delete-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
-                <img class="ico" src="../images/delete.png" style="width: 25px; height: 25px; vertical-align: middle">
+                <img class="ico" src="./images/delete.png" style="width: 25px; height: 25px; vertical-align: middle">
             </a></span>
         </div>
     </div>
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         form.reset();
     });
 
-    // Modal - salvar alterações
+
     editForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!currentEditPostId) return;
@@ -243,15 +243,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         await editPost(currentEditPostId, updatedData);
         editModal.style.display = 'none';
-        location.reload(); // simples e eficaz por agora
+        location.reload();
     });
 
-    // Modal - fechar
+
     closeModalBtn.addEventListener("click", () => {
         editModal.style.display = 'none';
     });
 
-    // Fechar modal se clicar fora do conteúdo
+
     window.addEventListener("click", (e) => {
         if (e.target === editModal) {
             editModal.style.display = 'none';
