@@ -15,20 +15,38 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">
-            <div class="small-center">
-                <div class="small-ball"></div>
-                <div class="small-shadow"></div>
+        <div class="navbar_pc">
+            <div class="logo">
+                <h1><a href="./index.html">The Padel Social Club</a></h1>
             </div>
-            <h1><a href="./index.html">The Padel Social Club</a></h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for matches, players, clubs...">
+            </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for matches, players, clubs...">
-        </div>
-        <div class="nav-icons">
-            <span onclick="window.location='signin.html'">Sign In</span>
-            <span onclick="window.location='signup.html'">Sign Up</span>
-            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+        <div class="navbar_mobile">
+            <div class="parent_navbar">
+                <div class="div1_navbar">
+                    <div class="logo">
+                        <h1><a href="./index.html">The Padel Social Club</a></h1>
+                    </div>
+                </div>
+                <div class="div2_navbar">
+                    <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
+                </div>
+                <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50" height="50"></a></div>
+                <div class="div4_navbar">Adrien</div>
+                <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
+                </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -108,7 +126,7 @@
 
 
         <aside class="right-sidebar">
-            <h3>Recent Activity 🎯</h3>
+            <h2>Recent Activity 🎯</h2>
             <div id="user-info"></div>
             <div id="user-email"></div>
             <div id="user-submited"></div>
@@ -125,6 +143,11 @@
                     <button>Follow Back</button>
                 </li>
             </ul>
+            <hr>
+            <h2>Padel Players</h2>
+            <div id="players-container">
+                <!-- Player data will be dynamically inserted here -->
+            </div>
         </aside>
     </div>
     <footer>
@@ -133,23 +156,24 @@
                 <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
             </div>
             <div class="footer_container_mobile">
-                <div class="social-icons">
-                    <a href="#"><img class="dev_ico1" src="./images/home.png"
-                            width="30" height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/marketplace.png" width="30"
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/padel_menu.png" width="30"
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/user_menu.png" width="30" 
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/menu.png" width="30" 
-                            height="30"></a>
+                <div class="parent_footer">
+                    <div class="div1_footer"><a href="#"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
+                    <div class="div2_footer"><a href="#"><img class="dev_ico1" src="./images/marketplace.png" width="25" height="25"></a></div>
+                    <div class="div3_footer"><a href="#"><img class="dev_ico1" src="./images/padel_menu.png" width="25" height="25"></a></div>
+                    <div class="div4_footer"><a href="#"><img class="dev_ico1" src="./images/user_menu.png" width="25" height="25"></a></div>
+                    <div class="div5_footer"><a href="#"><img class="dev_ico1" src="./images/menu.png" width="25" height="25"></a></div>
+                    <div class="div6_footer">HOME</div>
+                    <div class="div7_footer">MARKETPLACE</div>
+                    <div class="div8_footer">PADEL PREMIER</div>
+                    <div class="div9_footer">PROFILE</div>
+                    <div class="div10_footer">MENU</div>
                 </div>
             </div>
         </div>
     </footer>
     <!-- <script src="scripts/posts.js" defer></script> -->
     <script src="./scripts/dark_light_toggle.js" defer></script>
+    <script src="./lib/padel_api.js" defer></script>
     <script src="./scripts/posts_module.js" type="module" defer></script>
 </body>
 <style>
@@ -193,6 +217,46 @@ input, select  {
 button {
     background-color: #f1c40f;
     cursor: pointer;
+}
+.player-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.player-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.player-image.placeholder {
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-rank {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 </style>
 </html>

@@ -35,7 +35,7 @@ a {
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.navbar .navbar_mobile {
+.navbar_mobile {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,11 +48,6 @@ a {
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-.navbar_mobile {
-    display: none;
-}
-
 .navbar .logo {
     display: flex;
     align-items: center;
@@ -396,7 +391,9 @@ select {
     color: #777;
     margin-top: 15px;
 }
-
+.navbar .navbar_mobile {
+    display: none;
+}
 
 @media (max-width: 1024px) {
     .container {
@@ -443,6 +440,12 @@ select {
 
     .top-bar input {
         width: 100%;
+    }
+    .navbar .navbar_mobile {
+        display: none;
+    }
+    .footer_container_mobile {
+        display: none;
     }
 }
 

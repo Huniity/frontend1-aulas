@@ -15,20 +15,38 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">
-            <div class="small-center">
-                <div class="small-ball"></div>
-                <div class="small-shadow"></div>
+        <div class="navbar_pc">
+            <div class="logo">
+                <h1><a href="./index.html">The Padel Social Club</a></h1>
             </div>
-            <h1><a href="./index.html">The Padel Social Club</a></h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for matches, players, clubs...">
+            </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for matches, players, clubs...">
-        </div>
-        <div class="nav-icons">
-            <span onclick="window.location='signin.html'">Sign In</span>
-            <span onclick="window.location='signup.html'">Sign Up</span>
-            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+        <div class="navbar_mobile">
+            <div class="parent_navbar">
+                <div class="div1_navbar">
+                    <div class="logo">
+                        <h1><a href="./index.html">The Padel Social Club</a></h1>
+                    </div>
+                </div>
+                <div class="div2_navbar">
+                    <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
+                </div>
+                <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50" height="50"></a></div>
+                <div class="div4_navbar">Adrien</div>
+                <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
+                </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -61,17 +79,17 @@
                 <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
             </div>
             <div class="footer_container_mobile">
-                <div class="social-icons">
-                    <a href="#"><img class="dev_ico1" src="./images/home.png"
-                            width="30" height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/marketplace.png" width="30"
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/padel_menu.png" width="30"
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/user_menu.png" width="30" 
-                            height="30"></a>
-                    <a href="#"><img class="dev_ico1" src="./images/menu.png" width="30" 
-                            height="30"></a>
+                <div class="parent_footer">
+                    <div class="div1_footer"><a href="#"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
+                    <div class="div2_footer"><a href="#"><img class="dev_ico1" src="./images/marketplace.png" width="25" height="25"></a></div>
+                    <div class="div3_footer"><a href="#"><img class="dev_ico1" src="./images/padel_menu.png" width="25" height="25"></a></div>
+                    <div class="div4_footer"><a href="#"><img class="dev_ico1" src="./images/user_menu.png" width="25" height="25"></a></div>
+                    <div class="div5_footer"><a href="#"><img class="dev_ico1" src="./images/menu.png" width="25" height="25"></a></div>
+                    <div class="div6_footer">HOME</div>
+                    <div class="div7_footer">MARKETPLACE</div>
+                    <div class="div8_footer">PADEL PREMIER</div>
+                    <div class="div9_footer">PROFILE</div>
+                    <div class="div10_footer">MENU</div>
                 </div>
             </div>
         </div>
