@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <title>The Padel Social Club</title>
+    <link rel="stylesheet" href="./styles/index.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar_pc">
+            <div class="logo">
+                <h1><a href="./index.html">The Padel Social Club</a></h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for matches, players, clubs...">
+            </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
+        </div>
+        <div class="navbar_mobile">
+            <div class="parent_navbar">
+                <div class="div1_navbar">
+                    <div class="logo">
+                        <h1><a href="./index.html">The Padel Social Club</a></h1>
+                    </div>
+                </div>
+                <div class="div2_navbar">
+                    <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
+                </div>
+                <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50"
+                            height="50"></a></div>
+                <div class="div4_navbar">Adrien</div>
+                <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25"
+                            height="25"></a></div>
+            </div>
+            <div class="nav-icons">
+                <span onclick="window.location='signin.html'">Sign In</span>
+                <span onclick="window.location='signup.html'">Sign Up</span>
+                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img class="profile_img" src="./images/user.png" alt="User Profile">
+                <h2>Adrien Dejonc</h2>
+                <p>@Adrien</p>
+                <p>🎾 M1 Player! Right Handed, Right Side. Adidas Ambassador 🔥</p>
+                <button>My Profile</button>
+            </div>
+            <div class="skills">
+                <h3>Stats</h3>
+                <div class="skill-tags">
+                    <span>🏆 12 Wins</span>
+                    <span>🥎 25 Matches</span>
+                    <span>🔥 Top 3 World</span>
+                    <span>🎾 Metalbone HRD3+</span>
+                </div>
+            </div>
+            <div class="communities">
+                <h3>Clubs & Groups</h3>
+                <ul>
+                    <li>Padel by Stop Faro</li>
+                    <li>Academia Padel E. Beldade</li>
+                </ul>
+            </div>
+        </aside>
+
+
+        <main class="feed">
+            <div class="feed-menu">
+                <span><a href="./index.html">The Social 🌐</a></span>
+                <span><a href="./marketplace.html">The Market 🛒</a></span>
+                <span><a href="./courts.html">The Courts 🎾</a></span>
+                <span><a href="./padel_premier.html">The Premier 🏆</a></span>
+            </div>
+            <header class="top-bar">
+                <input type="text" placeholder="Search matches, players, clubs.">
+                <div class="icons">
+                </div>
+            </header>
+            <hr>
+            <button id="openModalBtn">List an item to The Marketplace (Rackets, Apparels, Accessories, etc.).</button>
+            <div id="market-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>List an item for sale</h2>
+                    <form id="add-market-form">
+                        <input type="file" id="imageInput" />
+                        <img id="preview" alt="Image Preview" />
+                        <input type="text" id="market-title" placeholder="Product Name..." required />
+                        <input type="text" id="market-description" placeholder="Product Description..." required />
+                        <input type="text" id="market-price" placeholder="Price..." required />
+                        <select id="market-sale-type" required>
+                            <option value="">Type of sale</option>
+                            <option value="💰 Selling">💰 Selling</option>
+                            <option value="📦 Trading">📦 Trading</option>
+                        </select>
+                        <select id="market-sale-condition" required>
+                            <option value="">Type of condition</option>
+                            <option value="📦 In the Box">📦 Brand New in the Box</option>
+                            <option value="✨ Brand New">✨ Brand New not in the Box</option>
+                            <option value="👌 Slightly Used">👌 Slightly Used</option>
+                            <option value="👍 Used">👍 Used</option>
+                            <option value="💔 Damaged">💔 Damaged</option>
+                        </select>
+                        <button type="submit">Add to Marketplace</button>
+                    </form>
+                </div>
+            </div>
+            <div id="marketplace-items"></div>
+
+            <script>
+                document.getElementById('imageInput').addEventListener('change', function (e) {
+                    const file = e.target.files[0];
+                    document.getElementById('imageInput').addEventListener('change', function (e) {
+                        const file = e.target.files[0];
+                        const preview = document.getElementById('preview');
+
+                        if (file && file.type.startsWith('image/')) { // Check if the file is an image
+                            const reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                const base64String = reader.result;
+                                sessionStorage.setItem('myImage', base64String);
+                                preview.src = base64String;
+                                preview.style.display = 'block'; // Show the preview
+                            };
+
+                            reader.readAsDataURL(file);
+                        } else {
+                            preview.src = '';
+                            preview.style.display = 'none';
+                            if (file) {
+                                alert('Please upload a valid image file.');
+                            }
+                        }
+                    });
+                });
+                // Open the modal
+                document.getElementById('openModalBtn').addEventListener('click', function () {
+                    document.getElementById('market-modal').style.display = 'block';
+                });
+
+                // Close the modal
+                document.querySelector('.close-btn').addEventListener('click', function () {
+                    document.getElementById('market-modal').style.display = 'none';
+                });
+
+                // Preview the uploaded image
+                document.getElementById('imageInput').addEventListener('change', function (e) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+
+                    reader.onloadend = function () {
+                        document.getElementById('preview').src = reader.result;
+                    };
+
+                    if (file) {
+                        reader.readAsDataURL(file);
+                    } else {
+                        document.getElementById('preview').src = '';
+                    }
+                });
+
+                // Handle form submission
+                document.getElementById('add-market-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form data
+                    const title = document.getElementById('market-title').value;
+                    const description = document.getElementById('market-description').value;
+                    const saleType = document.getElementById('market-sale-type').value;
+                    const imageSrc = document.getElementById('preview').src;
+                    const price = document.getElementById('market-price').value;
+                    const saleCondition = document.getElementById('market-sale-condition').value;
+                    // Create a new marketplace item
+                    const marketplaceItems = document.getElementById('marketplace-items');
+                    const item = document.createElement('div');
+                    item.classList.add('marketplace-item');
+                    item.innerHTML = `
+                        <img src="${imageSrc}" alt="${title}" class="marketplace-item-image" style="width: 250px; height: auto"/>
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                        <p>Type of Sale: ${saleType}</p>
+                        <p>Condition: ${saleCondition}</p>
+                        <p>Price: ${price}€</p>
+                    `;
+                    // Add the item to the marketplace
+                    marketplaceItems.appendChild(item);
+
+                    // Clear the form and close the modal
+                    document.getElementById('add-market-form').reset();
+                    document.getElementById('preview').src = '';
+                    document.getElementById('market-modal').style.display = 'none';
+                });
+            </script>
+        </main>
+
+
+        <aside class="right-sidebar">
+            <h2>Recent Activity 🎯</h2>
+            <div id="user-info"></div>
+            <div id="user-email"></div>
+            <div id="user-submited"></div>
+            <br>
+            <ul>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Chris joined your club <span>5 min ago</span></p>
+                    <button>Check the club!</button>
+                </li>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Sarah followed you <span>10 min ago</span></p>
+                    <button>Follow Back</button>
+                </li>
+            </ul>
+            <hr>
+        </aside>
+    </div>
+    <footer>
+        <div class="footer_container">
+            <div class="footer_container_pc">
+                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
+            </div>
+            <div class="footer_container_mobile">
+                <div class="parent_footer">
+                    <div class="div1_footer"><a href="#"><img class="dev_ico1" src="./images/home.png" width="25"
+                                height="25"></a></div>
+                    <div class="div2_footer"><a href="#"><img class="dev_ico1" src="./images/marketplace.png" width="25"
+                                height="25"></a></div>
+                    <div class="div3_footer"><a href="#"><img class="dev_ico1" src="./images/padel_menu.png" width="25"
+                                height="25"></a></div>
+                    <div class="div4_footer"><a href="#"><img class="dev_ico1" src="./images/user_menu.png" width="25"
+                                height="25"></a></div>
+                    <div class="div5_footer"><a href="#"><img class="dev_ico1" src="./images/menu.png" width="25"
+                                height="25"></a></div>
+                    <div class="div6_footer">HOME</div>
+                    <div class="div7_footer">MARKETPLACE</div>
+                    <div class="div8_footer">PADEL PREMIER</div>
+                    <div class="div9_footer">PROFILE</div>
+                    <div class="div10_footer">MENU</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <script src="scripts/posts.js" defer></script> -->
+    <script src="./scripts/dark_light_toggle.js" defer></script>
+    <script src="./lib/padel_api.js" defer></script>
+    <script src="./scripts/posts_module.js" type="module" defer></script>
+</body>
+<style>
+    #preview {
+        display: block;
+        margin: 10px 0;
+        max-width: 60%;
+        height: auto;
+        justify-self: center;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        padding-top: 150px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        justify-self: center;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 400px;
+        justify-self: center;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 10px 0 10px 0;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #f1c40f;
+        cursor: pointer;
+    }
+
+    .player-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .player-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .player-image.placeholder {
+        background: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+    }
+
+    .player-info {
+        flex: 1;
+    }
+
+    .player-rank {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .player-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+</style>
+
+</html>
