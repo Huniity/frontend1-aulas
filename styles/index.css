@@ -347,8 +347,9 @@ select {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: relative;
+    position:relative;
     bottom: 0;
+    top: 20vh;
 }
 
 .footer_container_mobile {
@@ -486,7 +487,7 @@ select {
         height: 70px;
     }
 
-    .navbar_mobile {
+    .navbar .navbar_mobile {
         display: flex;
         padding: 0;
         line-height: 1.2;
@@ -495,7 +496,7 @@ select {
         justify-content: space-evenly;
     }
 
-    .navbar_pc {
+    .navbar .navbar_pc {
         display: none;
     }
 
@@ -518,9 +519,10 @@ select {
     }
 
     .footer_container {
+        height: 6%;
         position: fixed;
         width: 100%;
-        padding: 10px 0 0 0;
+        padding: 7px 0 0 0;
         line-height: 1.2;
         justify-content: space-evenly;
         align-content: space-evenly;
@@ -532,7 +534,7 @@ select {
 
     .footer_container_mobile {
         display: block;
-        font-size: small;
+        font-size: xx-small;
     }
 
     .parent_footer {
@@ -616,7 +618,7 @@ select {
 
     .div4_navbar {
         grid-area: 2 / 2 / 3 / 3;
-        justify-self: left;
+        justify-self: center;
         align-self: center;
         padding-right: 20px;
     }
