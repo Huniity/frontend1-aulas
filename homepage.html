@@ -1,40 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Padel Social Club</title>
-    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/homepage.css">
-    <meta name="author" content="Adrien Dejonc">
-    <meta name="Padel Social Club" content="My Padel Network">
-    <meta name="keywords" content="portfolio, etic, dev, frontend, backend">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <meta http-equiv="refresh" content="6;url=/index.html">
+    <title>The Social</title>
+    <link rel="stylesheet" href="./styles/homepage.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-icons">
-            Ready for the Match?
-        </div>
-    </nav>
-    <main>
-        <header>
-
-        </header>
-        <div class="container">
-            <div class="welcome">
-                <p class="welcome_title">The Padel Social Club</p>
-                <div class="large-center">
-                    <div class="large-ball"></div>
-                    <div class="large-shadow"></div>
+    <shared-navbar></shared-navbar>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img class="profile_img" src="./images/user.png" alt="User Profile">
+                <h2>Adrien Dejonc</h2>
+                <p>@Adrien</p>
+                <p>🎾 M1 Player! Right Handed, Right Side. Adidas Ambassador 🔥</p>
+                <button>My Profile</button>
+            </div>
+            <div class="skills">
+                <h3>Stats</h3>
+                <div class="skill-tags">
+                    <span>🏆 12 Wins</span>
+                    <span>🥎 25 Matches</span>
+                    <span>🔥 Top 3 World</span>
+                    <span>🎾 Metalbone HRD3+</span>
                 </div>
             </div>
-        </div>
-    </main>
-</body>
+            <div class="communities">
+                <h3>Clubs & Groups</h3>
+                <ul>
+                    <li>Padel by Stop Faro</li>
+                    <li>Academia Padel E. Beldade</li>
+                </ul>
+            </div>
+        </aside>
 
+
+        <main class="feed">
+            <shared-top-menu></shared-top-menu>
+            <hr>
+            <h3 style="text-align: center;">How did you perform in your last game?</h3>
+            <form id="match-form">
+                <input type="text" id="user_name" placeholder="Team Captain" required />
+                <input type="text" id="match" placeholder="Team 1 VS Team 2" required />
+                <input type="text" id="result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                <select id="match_result" required>
+                    <option value="">End Result</option>
+                    <option value="🏆">🏆 Victory</option>
+                    <option value="💔">💔 Loss</option>
+                </select>
+                <button type="submit">Send your results!</button>
+                <br><br>
+                <hr>
+                <br>
+            </form>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Edit Match</h2>
+                    <form id="edit-match-form">
+                        <input type="text" id="edit-match" placeholder="Team 1 VS Team 2" required />
+                        <input type="text" id="edit-result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                        <select id="edit-match_result" required>
+                            <option value="">End Result</option>
+                            <option value="🏆">🏆 Victory</option>
+                            <option value="💔">💔 Loss</option>
+                        </select>
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            <div id="match-list"></div>
+            
+        </main>
+
+
+        <aside class="right-sidebar">
+            <h2>Recent Activity 🎯</h2>
+            <div id="user-info"></div>
+            <div id="user-email"></div>
+            <div id="user-submited"></div>
+            <br>
+            <ul>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Chris joined your club <span>5 min ago</span></p>
+                    <button>Check the club!</button>
+                </li>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Sarah followed you <span>10 min ago</span></p>
+                    <button>Follow Back</button>
+                </li>
+            </ul>
+            <hr>
+            <h2>Padel Players</h2>
+            <div id="players-container">
+                <!-- Player data will be dynamically inserted here -->
+            </div>
+        </aside>
+    </div>
+    <shared-footer></shared-footer>
+    <script src="./scripts/shared_components.js" defer></script>
+    <script src="./scripts/dark_light_toggle.js" defer></script>
+    <script src="./lib/padel_api.js" defer></script>
+    <script src="./scripts/posts_module.js" type="module" defer></script>
+    <script src="./scripts/search_posts.js" defer></script>
+</body>
 </html>

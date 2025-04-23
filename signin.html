@@ -8,55 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <title>Signin - Padel Social Club</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/homepage.css">
 
 </head>
 
 <body>
-
-    <nav class="navbar">
-        <div class="navbar_pc">
-            <div class="logo">
-                <h1><a href="./index.html">The Padel Social Club</a></h1>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for matches, players, clubs...">
-            </div>
-            <div class="nav-icons">
-                <span onclick="window.location='signin.html'">Sign In</span>
-                <span onclick="window.location='signup.html'">Sign Up</span>
-                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
-            </div>
-        </div>
-        <div class="navbar_mobile">
-            <div class="parent_navbar">
-                <div class="div1_navbar">
-                    <div class="logo">
-                        <h1><a href="./index.html">The Padel Social Club</a></h1>
-                    </div>
-                </div>
-                <div class="div2_navbar">
-                    <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
-                </div>
-                <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50" height="50"></a></div>
-                <div class="div4_navbar">Adrien</div>
-                <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
-                </div>
-            <div class="nav-icons">
-                <span onclick="window.location='signin.html'">Sign In</span>
-                <span onclick="window.location='signup.html'">Sign Up</span>
-                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
-            </div>
-        </div>
-    </nav>
+<shared-navbar></shared-navbar>
     <div class="container">
         <main class="feed">
-            <div class="feed-menu">
-                <span>The Social 🌐</span>
-                <span>Marketplace 🛒</span>
-                <span>Padel Premier 🏆</span>
-            </div>
-
+            <shared-top-menu></shared-top-menu>
             <hr>
             <div class="signup-box">
                 <h2>Create Your Account</h2>
@@ -67,33 +27,10 @@
                     <p>Dont have an account? <a href="./signup.html">Sign up</a></p>
                 </form>
             </div>
-            
-            <br>
-            <hr>
-            <br>
         </main>
     </div>
-    <footer>
-        <div class="footer_container">
-            <div class="footer_container_pc">
-                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
-            </div>
-            <div class="footer_container_mobile">
-                <div class="parent_footer">
-                    <div class="div1_footer"><a href="./index.html"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
-                    <div class="div2_footer"><a href="./marketplace.html"><img class="dev_ico1" src="./images/marketplace.png" width="25" height="25"></a></div>
-                    <div class="div3_footer"><a href="./padel_premier.html"><img class="dev_ico1" src="./images/padel_menu.png" width="25" height="25"></a></div>
-                    <div class="div4_footer"><a href="./courts.html"><img class="dev_ico1" src="./images/tennis-court (1).png" width="25" height="25"></a></div>
-                    <div class="div5_footer"><a href="#"><img class="dev_ico1" src="./images/menu.png" width="25" height="25"></a></div>
-                    <div class="div6_footer">HOME</div>
-                    <div class="div7_footer">MARKETPLACE</div>
-                    <div class="div8_footer">PADEL PREMIER</div>
-                    <div class="div9_footer">COURTS</div>
-                    <div class="div10_footer">MENU</div>
-                </div>
-            </div>
-        </div>
-    </footer>
+<shared-footer></shared-footer>
+<script src="scripts/shared_components.js" defer></script>
 </body>
 
 </html>

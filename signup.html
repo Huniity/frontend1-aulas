@@ -8,285 +8,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <title>SignUp - Padel Social Club</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/homepage.css">
 
 </head>
 
 <body>
-
-    <nav class="navbar">
-        <div class="navbar_pc">
-            <div class="logo">
-                <h1><a href="./index.html">The Padel Social Club</a></h1>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for matches, players, clubs...">
-            </div>
-            <div class="nav-icons">
-                <span onclick="window.location='signin.html'">Sign In</span>
-                <span onclick="window.location='signup.html'">Sign Up</span>
-                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
-            </div>
-        </div>
-        <div class="navbar_mobile">
-            <div class="parent_navbar">
-                <div class="div1_navbar">
-                    <div class="logo">
-                        <h1><a href="./index.html">The Padel Social Club</a></h1>
-                    </div>
-                </div>
-                <div class="div2_navbar">
-                    <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
-                </div>
-                <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50" height="50"></a></div>
-                <div class="div4_navbar">Adrien</div>
-                <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
-                </div>
-            <div class="nav-icons">
-                <span onclick="window.location='signin.html'">Sign In</span>
-                <span onclick="window.location='signup.html'">Sign Up</span>
-                <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
-            </div>
-        </div>
-    </nav>
+<shared-navbar></shared-navbar>
     <div class="container">
         <main class="feed">
-            <div class="feed-menu">
-                <span>The Social 🌐</span>
-                <span>Marketplace 🛒</span>
-                <span>Padel Premier 🏆</span>
-            </div>
-
+            <shared-top-menu></shared-top-menu>
             <hr>
             <div class="signup-box">
                 <h2>Create Your Account</h2>
-                <form id="match-form">
+                <form id="sign-form">
                     <input type="text" id="user_name" placeholder="User Name" required />
-                    <input type="text" id="fname" placeholder="First Name" required />
-                    <input type="text" id="lname" placeholder="Last Name" required />
+                    <input type="text" id="f_name" placeholder="First Name" required />
+                    <input type="text" id="l_name" placeholder="Last Name" required />
                     <input type="password" id="password" placeholder="Password" required />
-                    <select id="hand_option" required>
+                    <select id="main_hand" required>
                         <option value="">Main Hand</option>
                         <option value="left">👋 Left</option>
                         <option value="right">👋 Right</option>
                     </select>
-                    <input type="text" id="tag"
+                    <input type="text" id="tags"
                         placeholder="Tags (Racket, Top, Match played, Wins and Losses, streaks...)" />
-                    <input type="text" id="den" placeholder="Your Den (Groups, Academy, Club, School, Team...)" />
+                    <input type="text" id="groups" placeholder="Your Den (Groups, Academy, Club, School, Team...)" />
                     <button type="submit">Sign Up</button>
                     <p>Already have an account? <a href="./signin.html">Sign in</a></p>
                 </form>
             </div>
         </main>
     </div>
-    <footer>
-        <div class="footer_container">
-            <div class="footer_container_pc">
-                <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
-            </div>
-            <div class="footer_container_mobile">
-              <div class="parent_footer">
-                <div class="div1_footer"><a href="./index.html"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
-                <div class="div2_footer"><a href="./marketplace.html"><img class="dev_ico1" src="./images/marketplace.png" width="25" height="25"></a></div>
-                <div class="div3_footer"><a href="./padel_premier.html"><img class="dev_ico1" src="./images/padel_menu.png" width="25" height="25"></a></div>
-                <div class="div4_footer"><a href="./courts.html"><img class="dev_ico1" src="./images/tennis-court (1).png" width="25" height="25"></a></div>
-                <div class="div5_footer"><a href="#"><img class="dev_ico1" src="./images/menu.png" width="25" height="25"></a></div>
-                <div class="div6_footer">HOME</div>
-                <div class="div7_footer">MARKETPLACE</div>
-                <div class="div8_footer">PADEL PREMIER</div>
-                <div class="div9_footer">COURTS</div>
-                <div class="div10_footer">MENU</div>
-            </div>
-            </div>
-        </div>
-    </footer>
+<shared-footer></shared-footer>
+<script src="scripts/shared_components.js" defer></script>
 </body>
-
 </html>
-
-<style>
-    /* Reset básico */
-    /* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.form-title {
-    text-align: center;
-    font-size: 28px;
-    color: #1e1e1e;
-    margin-bottom: 25px;
-}
-
-#match-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#match-form input,
-#match-form select {
-    font-family: "Anton", sans-serif;
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-#match-form input:focus,
-#match-form select:focus {
-    border-color: #f1c40f;
-    outline: none;
-    box-shadow: 0 0 5px #f1c40f;
-}
-
-#match-form button {
-    font-family: "Anton", sans-serif;
-    font-size: 16px;
-    background-color: #f1c40f;
-    color: #1e1e1e;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#match-form button:hover {
-    background-color: #e0b90d;
-}
-
-body {
-  background-color: #121212;
-  color: #f5f5f5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #1e1e1e;
-  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
-}
-
-.logo h1 {
-  font-family: 'Anton', sans-serif;
-  color: #f1c40f;
-  font-size: 24px;
-}
-
-.search-bar input {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  width: 250px;
-}
-
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.nav-icons span {
-  cursor: pointer;
-  color: #f1c40f;
-  font-weight: 600;
-}
-
-
-.container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 30px 20px;
-}
-
-.feed {
-  background-color: #1c1c1c;
-  padding: 30px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: 0 0 10px rgba(241, 196, 15, 0.1);
-}
-
-.feed-menu {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 25px;
-  color: #f1c40f;
-  font-weight: bold;
-}
-
-.top-bar input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background-color: #2c2c2c;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-
-form#match-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: #2c2c2c;
-  padding: 25px;
-  border-radius: 12px;
-}
-
-form#match-form input,
-form#match-form select {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
-  color: #fff;
-  font-size: 16px;
-}
-
-form#match-form input::placeholder {
-  color: #aaa;
-}
-
-form#match-form button {
-  background-color: #f1c40f;
-  color: #121212;
-  font-weight: bold;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form#match-form button:hover {
-  background-color: #d4ac0d;
-}
-
-
-footer {
-  background-color: #1e1e1e;
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
-  font-size: 14px;
-} */
-</style>
