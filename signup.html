@@ -21,25 +21,28 @@
             <div class="signup-box">
                 <h2>Create Your Account</h2>
                 <form id="sign-form">
-                    <input type="text" id="user_name" placeholder="User Name" required />
-                    <input type="text" id="f_name" placeholder="First Name" required />
-                    <input type="text" id="l_name" placeholder="Last Name" required />
-                    <input type="password" id="password" placeholder="Password" required />
-                    <select id="main_hand" required>
+                    <input type="text" id="user_name" placeholder="User Name" required style="padding-left: 20px; max-width: 480px"/>
+                    <input type="text" id="f_name" placeholder="First Name" required style="padding-left: 20px; max-width: 480px"/>
+                    <input type="text" id="l_name" placeholder="Last Name" required style="padding-left: 20px; max-width: 480px"/>
+                    <input type="text" id="email" placeholder="Email" required style="padding-left: 20px; max-width: 480px"/>
+                    <input type="password" id="password" placeholder="Password" required style="padding-left: 20px; max-width: 480px"/>
+                    <select id="main_hand" required style="padding-left: 20px; max-width: 500px">
                         <option value="">Main Hand</option>
                         <option value="left">👋 Left</option>
                         <option value="right">👋 Right</option>
                     </select>
                     <input type="text" id="tags"
-                        placeholder="Tags (Racket, Top, Match played, Wins and Losses, streaks...)" />
-                    <input type="text" id="groups" placeholder="Your Den (Groups, Academy, Club, School, Team...)" />
+                        placeholder="Tags (Racket, Top, Match played, Wins and Losses, streaks...)" style="padding-left: 20px; max-width: 480px"/>
+                    <input type="text" id="groups" placeholder="Your Den (Groups, Academy, Club, School, Team...)" style="padding-left: 20px; max-width: 480px"/>
                     <button type="submit">Sign Up</button>
                     <p>Already have an account? <a href="./signin.html">Sign in</a></p>
                 </form>
             </div>
+            <div class="users-container"></div>
         </main>
     </div>
 <shared-footer></shared-footer>
-<script src="scripts/shared_components.js" defer></script>
+<script src="./scripts/users_module.js" type="module" defer></script>
+<script src="./scripts/shared_components.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="splide">
+        <h1 style="text-align: center;">SPLIDE CAROUSSEL</h1>
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <p style="text-align: center">BABOLAT VIPER (ATTACK)</p><img src="../images/babo.png"
+                        style="width: 350px; height: auto">
+                </li>
+                <li class="splide__slide">
+                    <p style="text-align: center">ADIDAS METALBONE (ATTACK)</p><img src="../images/metalbone.png"
+                        style="width: 350px; height: auto">
+                </li>
+                <li class="splide__slide">
+                    <p style="text-align: center">ADIDAS METALBONE SIGNATURE EDITION (ATTACK)</p><img
+                        src="../images/metalbone2.png" style="width: 350px; height: auto">
+                </li>
+                <li class="splide__slide">
+                    <p style="text-align: center">NOX AT 10k (CONTROL)</p><img src="../images/nox.png"
+                        style="width: 350px; height: auto">
+                </li>
+            </ul>
+        </div>
+        <!-- Add the progress bar element -->
+        <div class="my-slider-progress">
+            <div class="my-slider-progress-bar"></div>
+        </div>
+    </div>
+    <div class="sweetalert2" style="text-align: center; margin-top: 20px;">
+        <button id="success_fire" aria-label="SUCESS">SUCESS</button>
+        <button id="error_fire" aria-label="ERROR">ERROR</button>
+        <button id="info_fire" aria-label="INFO">INFO</button>
+        <button id="warning_fire" aria-label="WARNING">WARNING</button>
+    </div>
+    <style>
+        body {
+            background-color: #262626;
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+
+        button {
+            background-color: rgb(112, 102, 224);
+            box-shadow: none;
+            color: rgb(255, 255, 255);
+            font-size: 1.125em;
+            font-weight: 500;
+            padding: 0.9em 2.1875em;
+            border-width: 0px;
+            border-style: initial;
+            border-color: initial;
+            border-image: initial;
+            border-radius: 0.1875em;
+            white-space: nowrap;
+        }
+
+        .splide {
+            max-width: 600px;
+            margin-top: 25vh;
+            margin-left: 75vh;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            background-color: #1e1e1e;
+        }
+
+        .splide__track {
+            padding: 10px;
+        }
+
+        .splide__slide img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .my-slider-progress {
+            position: relative;
+            height: 5px;
+            background: #333333;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .my-slider-progress-bar {
+            height: 100%;
+            background: #07f112;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const splide = new Splide('.splide', {
+                type: 'loop', // Loop through slides
+                perPage: 1, // Show one slide at a time
+                autoplay: true, // Enable autoplay
+                interval: 3000, // 3 seconds per slide
+                pauseOnHover: false, // Pause autoplay on hover
+                pagination: false, // Enable pagination dots
+                arrows: false, // Enable navigation arrows
+            });
+
+            const progressBar = document.querySelector('.my-slider-progress-bar');
+            splide.on('mounted move', function () {
+                const end = splide.Components.Controller.getEnd() + 1;
+                const current = splide.index + 1;
+                const percentage = (current / end) * 100;
+                progressBar.style.width = `${percentage}%`;
+            });
+
+            splide.mount();
+        });
+    </script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        document
+            .getElementById("success_fire")
+            ?.addEventListener("click", () => {
+                Toast.fire({
+            icon: "success",
+            title: "This is a successful alert!"
+            });
+            });
+
+        document
+            .getElementById("info_fire")
+            ?.addEventListener("click", () => {
+                Toast.fire({
+            icon: "info",
+            title: "This is an info alert!"
+            });
+            });
+
+        document
+            .getElementById("error_fire")
+            ?.addEventListener("click", () => {
+                Toast.fire({
+            icon: "error",
+            title: "This is an error alert!"
+            });
+            });
+
+        document
+            .getElementById("warning_fire")
+            ?.addEventListener("click", () => {
+                Toast.fire({
+            icon: "warning",
+            title: "This is a warning alert!"
+            });
+            });
+    </script>
+</body>
+
+</html>
