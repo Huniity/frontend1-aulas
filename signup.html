@@ -24,6 +24,7 @@
                     <input type="text" id="username" placeholder="User Name" required style="padding-left: 20px; max-width: 480px"/>
                     <input type="text" id="f_name" placeholder="First Name" required style="padding-left: 20px; max-width: 480px"/>
                     <input type="text" id="l_name" placeholder="Last Name" required style="padding-left: 20px; max-width: 480px"/>
+                    <input type="text" id="bio" placeholder="Bio (ex: I am a padel player, I love to play with my friends...)" style="padding-left: 20px; max-width: 480px"/>
                     <input type="text" id="email" placeholder="Email" required style="padding-left: 20px; max-width: 480px"/>
                     <input type="password" id="password" placeholder="Password" required style="padding-left: 20px; max-width: 480px"/>
                     <select id="main_hand" required style="padding-left: 20px; max-width: 500px">
@@ -38,14 +39,13 @@
                     <p>Already have an account? <a href="./signin.html">Sign in</a></p>
                 </form>
             </div>
-            <div class="users-container"></div>
         </main>
     </div>
 <shared-footer></shared-footer>
 <script src="./scripts/users_module.js" type="module" defer></script>
 <script src="./scripts/shared_components.js" defer></script>
 <script type="module">
-    import { createUser } from "./scripts/users_module.js";
+    import { createUser } from "./lib/mock_api.js";
 
     const Toast = Swal.mixin({
         toast: true,
@@ -69,6 +69,7 @@
             const f_name = document.querySelector("#f_name").value;
             const l_name = document.querySelector("#l_name").value;
             const email = document.querySelector("#email").value;
+            const bio = document.querySelector("#bio").value;
             const password = document.querySelector("#password").value;
             const main_hand = document.querySelector("#main_hand").value;
             const tags = document.querySelector("#tags").value.split(",").map(tag => tag.trim());
@@ -83,6 +84,7 @@
                 main_hand,
                 tags,
                 groups,
+                bio,
                 avatar: `https://robohash.org/${Math.floor(Math.random() * 1000)}.png`,
                 created_at: new Date().toISOString(),
             };
@@ -91,7 +93,10 @@
                 await createUser(newUser);
                 Toast.fire({
                     icon: "success",
-                    title: "Your account has been created successfully!"
+                    title: "Your account has been created successfully!",
+                    background: "#1e1e1e",
+                    color: "#f1c40f",
+                    width: "500px"
                 });
                 setTimeout(() => {
                     window.location.href = "./signin.html";
@@ -100,11 +105,19 @@
                 console.error("Error creating account:", error);
                 Toast.fire({
                     icon: "error",
-                    title: "Failed to create account. Please try again."
+                    title: "Failed to create account. Please try again.",
+                    background: "#1e1e1e",
+                    color: "#f1c40f",
+                    width: "500px"
                 });
             }
         });
     });
 </script>
+<style>
+    .swal2-timer-progress-bar {
+      background: #f1c40f;
+    }
+    </style>
 </body>
 </html>

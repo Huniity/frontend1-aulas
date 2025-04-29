@@ -238,3 +238,11 @@ body {
         animation-timing-function: ease-out;
     }
 }
+@media (max-width: 450px) {
+    .navbar {
+        margin-left: 50%;
+    }
+    .welcome_title {
+        margin-top: 60%;
+    }
+}

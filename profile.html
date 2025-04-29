@@ -23,10 +23,53 @@ https://sweetalert2.github.io/#usage -->
             <hr>
             <div class="signup-box">
                 <h2>MY ACCOUNT</h2>
+                <div class="users-container"></div>
             </div>
         </main>
     </div>
 <shared-footer></shared-footer>
+<script src="./scripts/users_module.js" type="module" defer></script>
 <script src="scripts/shared_components.js" defer></script>
+<script>
+    const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
+    if (!signedInUser) {
+        Swal.fire({
+            icon: 'info',
+            title: 'Oh no...',
+            text: 'You need to sign in first!',
+            footer: '<a href="./signin.html" style="color: white; text-decoration: underline">Sign in</a> or <a href="./signup.html" style="color: white;  text-decoration: underline">Sign up</a>',
+            width: "600px",
+            theme: "dark",
+            confirmButtonText: '<a href="./homepage.html" style="color: #181818; font-family: Anton"> Back to Homepage</a>',
+            confirmButtonColor: '#f1c40f',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+    } else {
+        const usersContainer = document.querySelector('.users-container');
+        usersContainer.innerHTML = `
+            <div class="user-card">
+                <img src="${signedInUser.avatar}" alt="${signedInUser.username}" class="user-avatar">
+                <h2>${signedInUser.f_name} ${signedInUser.l_name}</h2>
+                <p>Username: ${signedInUser.username}</p>
+                <p>Email: ${signedInUser.email}</p>
+                <p>Main Hand: ${signedInUser.main_hand}</p>
+                <div class="skills">
+                    Tags:
+                    <ul>
+                        ${signedInUser.tags.map(tag => `<li>${tag}</li>`).join("")}
+                    </ul>
+                </div>
+                <div class="communities">
+                    Groups: 
+                    <ul>
+                        ${signedInUser.groups.map(group => `<li>${group}</li>`).join("")}
+                    </ul>
+                </div>
+                <p>Joined: ${new Date(signedInUser.created_at).toLocaleDateString()}</p>
+            </div>
+        `;
+    }
+</script>
 </body>
 </html>

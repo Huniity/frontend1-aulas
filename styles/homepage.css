@@ -149,7 +149,7 @@ button {
     margin-bottom: 10px;
 }
 
-.skill-tags span,
+.skills ul li,
 .communities ul li {
     display: inline-block;
     background-color: #e1e1e1;
@@ -161,7 +161,7 @@ button {
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.communities ul {
+.skills ul, .communities ul {
     list-style: none;
     padding: 0;
 }

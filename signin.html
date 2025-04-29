@@ -59,12 +59,14 @@
                 const user = await signInUser(userName, password);
 
                 if (user) {
-                    // Store the full user object in localStorage
                     localStorage.setItem("signedInUser", JSON.stringify(user));
 
                     Toast.fire({
                         icon: "success",
-                        title: "Sign-in successful!"
+                        title: "Sign-in successful!",
+                        background: "#1e1e1e",
+                        color: "#f1c40f",
+                        width: "500px"
                     });
                     setTimeout(() => {
                         window.location.href = "./homepage.html";
@@ -72,17 +74,28 @@
                 } else {
                     Toast.fire({
                         icon: "error",
-                        title: "Invalid username or password. Please try again."
+                        title: "Invalid username or password. Please try again.",
+                        background: "#1e1e1e",
+                        color: "#f1c40f",
+                        width: "500px"
                     });
                 }
             } catch (error) {
                 console.error("Error during sign-in:", error);
                 Toast.fire({
                     icon: "error",
-                    title: "An error occurred. Please try again later."
+                    title: "An error occurred. Please try again later.",
+                    background: "#1e1e1e",
+                    color: "#f1c40f",
+                    width: "500px"
                 });
             }
         });
     });
 </script>
+<style>
+    .swal2-timer-progress-bar {
+      background: #f1c40f;
+    }
+    </style>
 </html>
