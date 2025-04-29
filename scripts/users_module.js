@@ -9,18 +9,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         userElement.classList.add("user");
         userElement.innerHTML = `
             <div class="user-card">
-                <img src="${user.avatar}" alt="${user.user_name}" class="user-avatar">
+                <img src="${user.avatar}" alt="${user.username}" class="user-avatar">
                 <h2>${user.f_name} ${user.l_name}</h2>
-                <p>Username: ${user.user_name}</p>
-                <p>Email: ${user.email || "N/A"}</p>
+                <p>Username: ${user.username}</p>
+                <p>Email: ${user.email}</p>
                 <p>Main Hand: ${user.main_hand}</p>
                 <div class="skill-tags">
-                    Tags: <span>${user.tags}</span>
+                    Tags:
+                    <ul>
+                        ${user.tags.map(tag => `<span>${tag}</span>`).join("")}
+                    </ul>
                 </div>
                 <div class="communities">
-                <ul>
-                    <li>Groups: ${user.groups.join("\n")}</li>
-                </ul>
+                    Groups: 
+                    <ul>
+                        ${user.groups.map(group => `<li>${group}</li>`).join("")}
+                    </ul>
                 </div>
                 <p>Joined: ${new Date(user.created_at).toLocaleDateString()}</p>
             </div>
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     userForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const user_name = document.querySelector("#user_name").value;
+        const username = document.querySelector("#username").value;
         const f_name = document.querySelector("#f_name").value;
         const l_name = document.querySelector("#l_name").value;
         const password = document.querySelector("#password").value;
@@ -47,9 +51,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         const tags = document.querySelector("#tags").value.split(",").map(tag => tag.trim());
         const groups = document.querySelector("#groups").value.split(",").map(group => group.trim());
         const avatar = `https://robohash.org/${Math.floor(Math.random() * 1000)}.png`;
+        const email = document.querySelector("#email").value;
 
         const newUser = {
-            user_name,
+            username,
             f_name,
             l_name,
             password,
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             tags,
             groups,
             avatar,
+            email,
             created_at: new Date().toISOString(),
         };
 
@@ -70,3 +76,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+export async function signInUser(userName, password) {
+    try {
+        const users = await getUsers(); // Fetch all users from the mock API
+        const user = users.find(
+            (u) => u.username === userName && u.password === password
+        );
+        return user || null; // Return the user object if found, otherwise null
+    } catch (error) {
+        console.error("Error during sign-in:", error);
+        throw new Error("Failed to sign in. Please try again later.");
+    }
+}

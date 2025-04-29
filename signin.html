@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <title>Signin - Padel Social Club</title>
     <link rel="stylesheet" href="./styles/homepage.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert2 -->
 </head>
 
 <body>
@@ -26,11 +26,63 @@
                     <button type="submit">Sign Up</button>
                     <p>Dont have an account? <a href="./signup.html">Sign up</a></p>
                 </form>
-            </div>
-        </main>
+            </div>        </main>
     </div>
 <shared-footer></shared-footer>
 <script src="scripts/shared_components.js" defer></script>
 </body>
+<script type="module">
+    import { signInUser } from "./scripts/users_module.js";
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const signInForm = document.querySelector("#match-form");
+
+        signInForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const userName = document.querySelector("#user_name").value;
+            const password = document.querySelector("#password").value;
+
+            try {
+                const user = await signInUser(userName, password);
+
+                if (user) {
+                    // Store the full user object in localStorage
+                    localStorage.setItem("signedInUser", JSON.stringify(user));
+
+                    Toast.fire({
+                        icon: "success",
+                        title: "Sign-in successful!"
+                    });
+                    setTimeout(() => {
+                        window.location.href = "./homepage.html";
+                    }, 3000);
+                } else {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Invalid username or password. Please try again."
+                    });
+                }
+            } catch (error) {
+                console.error("Error during sign-in:", error);
+                Toast.fire({
+                    icon: "error",
+                    title: "An error occurred. Please try again later."
+                });
+            }
+        });
+    });
+</script>
 </html>

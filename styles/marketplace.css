@@ -51,7 +51,7 @@
     #preview {
         display: none;
         margin: 10px 0;
-        max-width: 60%;
+        max-width: 30%;
         height: auto;
         justify-self: center;
     }

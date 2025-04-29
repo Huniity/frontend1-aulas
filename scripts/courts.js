@@ -7,7 +7,7 @@ const canvas = document.getElementById('gameCanvas');
     const racketHeight = 110;
     const paddleSpeed = 15;
 
-    // Load racket images
+
     const hitSound = new Audio('./images/hit.mp3');
     // const cheerSound = new Audio('./images/cheer.mp3');
     const racketLeft = new Image();
