@@ -28,7 +28,8 @@ class SharedNavbar extends HTMLElement {
                         <div class="div2_navbar">
                             <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
                         </div>
-                        <div class="div3_navbar"><a href="#"><img class="profile_img_mobile" src="./images/user.png" width="50" height="50"></a></div>
+                                        
+                        <div class="div3_navbar"><a href="#"><img src="${signedInUser.avatar}" alt="${signedInUser.username}" class="profile_img_mobile" width="50" height="50"></a></div>
                         <div class="div4_navbar">${signedInUser?.username}</div>
                         <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
                     </div>
