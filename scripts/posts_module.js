@@ -1,5 +1,3 @@
-import { getPosts, createPost, editPost, deletePost } from "../lib/mock_api.js";
-
 const formatDate = (isoString) => {
     const date = new Date(isoString);
     return new Intl.DateTimeFormat("pt-PT", {
@@ -23,27 +21,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     const editForm = document.getElementById("edit-match-form");
 
     let currentEditPostId = null;
+    let currentEditUserId = null;
 
     const renderPost = (post, prepend = false) => {
+        const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
+
         const postItem = document.createElement("div");
         postItem.classList.add("post");
         postItem.innerHTML = `
 <div class="post-container" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative;">
     <div class="user-info" style="display: flex; align-items: center;">
-        <img src="${post.avatar}" alt="avatar" style="object-fit: cover; width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
-        <h2 style="margin: 0;">${post.user_name}</h2>
+        <img src="${post.user.avatar}" alt="avatar" style="object-fit: cover; width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+        <h2 style="margin: 0;">${post.user.f_name} ${post.user.l_name} (@${post.user.username})</h2>
     </div>
-    <div class="dropdown" style="position: absolute; right: 0; top: 0; padding: 5px;">
-        <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
-        <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
-            <span><a href="#" class="edit-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
-                <img class="ico" src="./images/editing.png" style="width: 25px; height: 25px; vertical-align: middle">
-            </a></span>
-            <span><a href="#" class="delete-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
-                <img class="ico" src="./images/delete.png" style="width: 25px; height: 25px; vertical-align: middle">
-            </a></span>
-        </div>
-    </div>
+    ${
+        signedInUser && signedInUser.id === post.user.id
+            ? `<div class="dropdown" style="position: absolute; right: 0; top: 0; padding: 5px;">
+                <button class="dropdown-button" style="background: none; border: none; cursor: pointer;">...</button>
+                <div class="dropdown-content" style="position: absolute; right: 0; top: 100%; display: none; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                    <span><a href="#" class="edit-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
+                        <img class="ico" src="./images/editing.png" style="width: 25px; height: 25px; vertical-align: middle">
+                    </a></span>
+                    <span><a href="#" class="delete-post" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
+                        <img class="ico" src="./images/delete.png" style="width: 25px; height: 25px; vertical-align: middle">
+                    </a></span>
+                </div>
+            </div>`
+            : ""
+    }
 </div>
 
 <div class="post-content" style="padding: 0 0 0 50px;">
@@ -52,38 +57,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     <p>${post.match_result}</p>
     <p>${formatDate(post.created_at)}</p>
 </div>
-
-<div class="comment-section" style="margin-top: 20px;">
-    <input type="text" style="margin-bottom: 7.5px; padding: 10px 0 10px 0; width: 100%; border: 0px solid #ccc; border-radius: 5px; background-color: #f1f1f1; box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;" placeholder="Write your comment">
-    <button type="submit" style="padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; color: #1e1e1e; background-color: #f1c40f;">Post!</button>
-</div>
         `;
 
-        const dropdownButton = postItem.querySelector('.dropdown-button');
-        const dropdownContent = postItem.querySelector('.dropdown-content');
-        dropdownButton.addEventListener('click', () => {
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
+        if (signedInUser && signedInUser.id === post.user.id) {
+            const dropdownButton = postItem.querySelector('.dropdown-button');
+            const dropdownContent = postItem.querySelector('.dropdown-content');
+            dropdownButton.addEventListener('click', () => {
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            });
 
-        const editButton = postItem.querySelector('.edit-post');
-        editButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            currentEditPostId = post.id;
-            editMatchInput.value = post.match;
-            editResultInput.value = post.result;
-            editMatchResultInput.value = post.match_result;
-            editModal.style.display = 'flex';
-        });
+            const editButton = postItem.querySelector('.edit-post');
+            editButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentEditPostId = post.id;
+                currentEditUserId = post.user.id;
+                editMatchInput.value = post.match;
+                editResultInput.value = post.result;
+                editMatchResultInput.value = post.match_result;
+                editModal.style.display = 'flex';
+            });
 
-        const deleteButton = postItem.querySelector('.delete-post');
-        deleteButton.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const confirmDelete = confirm("Are you sure you want to delete this post?");
-            if (confirmDelete) {
-                await deletePost(post.id);
-                postItem.remove();
-            }
-        });
+            const deleteButton = postItem.querySelector('.delete-post');
+            deleteButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const confirmDelete = confirm("Are you sure you want to delete this post?");
+                if (confirmDelete) {
+                    await deletePost(post.user.id, post.id);
+                    postItem.remove();
+                }
+            });
+        }
 
         if (prepend) {
             postList.prepend(postItem);
@@ -92,35 +95,65 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
-    const posts = await getPosts();
-    posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    posts.forEach(post => renderPost(post));
+    try {
+        const users = await fetch("https://67f56836913986b16fa476aa.mockapi.io/api/users").then((res) => res.json());
+        const posts = users.flatMap((user) =>
+            user.posts.map((post) => ({
+                ...post,
+                user: {
+                    id: user.id,
+                    f_name: user.f_name,
+                    l_name: user.l_name,
+                    username: user.username,
+                    avatar: user.avatar,
+                },
+            }))
+        );
+
+        posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        posts.forEach(post => renderPost(post));
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const user_name = document.getElementById("user_name").value;
-        const match = document.getElementById("match").value;
-        const result = document.getElementById("result").value;
-        const match_result = document.getElementById("match_result").value;
+        const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
+        if (!signedInUser) {
+            alert("You must be logged in to create a post.");
+            return;
+        }
 
         const newPost = {
-            user_name,
-            match,
-            result,
-            match_result,
+            id: Date.now().toString(), // Generate a unique ID for the post
+            title: document.getElementById("post-title").value,
+            match: document.getElementById("post-match").value,
+            result: document.getElementById("post-result").value,
+            match_result: document.getElementById("post-match-result").value,
             created_at: new Date().toISOString(),
-            avatar: "https://placehold.co/600x400/orange/white"
+            comments: [],
+            likes: 0,
         };
 
-        const postedData = await createPost(newPost);
-        renderPost(postedData, true); // render no topo
-        form.reset();
-    });
+        try {
+            signedInUser.posts.push(newPost);
+            await fetch(`https://67f56836913986b16fa476aa.mockapi.io/api/users/${signedInUser.id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(signedInUser),
+            });
 
+            localStorage.setItem("signedInUser", JSON.stringify(signedInUser));
+            renderPost({ ...newPost, user: signedInUser }, true);
+            form.reset();
+        } catch (error) {
+            console.error("Error creating post:", error);
+        }
+    });
 
     editForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (!currentEditPostId) return;
+        if (!currentEditPostId || !currentEditUserId) return;
 
         const updatedData = {
             match: editMatchInput.value,
@@ -128,16 +161,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             match_result: editMatchResultInput.value,
         };
 
-        await editPost(currentEditPostId, updatedData);
-        editModal.style.display = 'none';
-        location.reload();
+        try {
+            const user = await fetch(`https://67f56836913986b16fa476aa.mockapi.io/api/users/${currentEditUserId}`).then((res) => res.json());
+            const postIndex = user.posts.findIndex((post) => post.id === currentEditPostId);
+            if (postIndex !== -1) {
+                user.posts[postIndex] = { ...user.posts[postIndex], ...updatedData };
+                await fetch(`https://67f56836913986b16fa476aa.mockapi.io/api/users/${currentEditUserId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(user),
+                });
+                editModal.style.display = 'none';
+                location.reload();
+            }
+        } catch (error) {
+            console.error("Error editing post:", error);
+        }
     });
-
 
     closeModalBtn.addEventListener("click", () => {
         editModal.style.display = 'none';
     });
-
 
     window.addEventListener("click", (e) => {
         if (e.target === editModal) {
@@ -146,3 +190,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+async function deletePost(userId, postId) {
+    try {
+        const user = await fetch(`https://67f56836913986b16fa476aa.mockapi.io/api/users/${userId}`).then((res) => res.json());
+        user.posts = user.posts.filter((post) => post.id !== postId);
+        await fetch(`https://67f56836913986b16fa476aa.mockapi.io/api/users/${userId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
+        });
+    } catch (error) {
+        console.error("Error deleting post:", error);
+    }
+}
