@@ -51,11 +51,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 </div>
 
-<div class="post-content" style="padding: 0 0 0 50px;">
+<div class="post-content" style="padding: 0 0 0 70px;">
     <p>${post.match}</p>
     <p>${post.result}</p>
     <p>${post.match_result}</p>
     <p>${formatDate(post.created_at)}</p>
+</div>
+<div class="comment-section" style="margin-top: 20px">
+    <input type="text" style="margin-bottom: 7.5px; padding: 10px 0 10px 0; border: 0px solid #ccc; border-radius: 5px; background-color: #f1f1f1; box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;" placeholder="Write your comment">
+    <button type="submit" style="padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; color: #1e1e1e; background-color: #f1c40f;">Post!</button>
 </div>
         `;
 
