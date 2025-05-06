@@ -3,9 +3,12 @@ const apiURL = "https://67f56836913986b16fa476aa.mockapi.io/api/";
 export const getTodo = async () => {
     const response = await fetch(apiURL + "todos");
     const data = await response.json();
-    return data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    return data
 };
-
+export const getTodoById = async (id) => {
+    const response = await fetch(`${apiURL}todos/${id}`);
+    return await response.json();
+};
 export const createTodo = async (postData) => {
     const response = await fetch(apiURL + "todos", {
         method: 'POST',
