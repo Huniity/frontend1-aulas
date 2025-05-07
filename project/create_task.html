@@ -39,20 +39,29 @@
                     <form id="todo_form">
                         <input type="text" id="todo-title" placeholder="TITLE" required />
                         <input type="text" id="todo-match" placeholder="DESCRIPTION" required />
-                        <input type="text" id="todo-category" placeholder="CATEGORY" required />
+                        <select aria-label="category" id="todo-category" required>
+                            <option value="">CATEGORY</option>
+                            <option value="🏠 HOME"> 🏠 HOME
+                            </option>
+                            <option value="🎓 SCHOOL"> 🎓SCHOOL
+                            </option>
+                            <option value="💼 WORK"> 💼 WORK
+                            </option>
+                            <option value="🏃‍♂️ SPORT"> 🏃‍♂️ SPORT
+                            </option>
+                            <option value="📌 OTHER"> 📌 OTHER </option>
+                        </select>
                         <input type="date" id="todo-due" placeholder="DUE DATE" required />
                         <select aria-label="Priority" id="todo-priority" required>
                             <option value="">PRIORITY</option>
-                            <option value="🛋 Eh, Whenever">🛋 “Eh, Whenever” – Lowest priority. Could do it. Or not.
+                            <option value="🛋 Eh, Whenever">🛋 “Eh, Whenever” – Lowest.
                             </option>
-                            <option value="📅 Someday... Probably">📅 “Someday... Probably” – Medium-low. Might happen
-                                eventually.</option>
-                            <option value="⏰ Soon-ish” – Middle">⏰ “Soon-ish” – Middle. Feels mildly urgent but still
-                                ignorable.</option>
-                            <option value="🚨 Kinda Important">🚨 “Kinda Important” – Higher priority. Should probably
-                                do this.</option>
-                            <option value="🔥 Do It NOW, Dummy">🔥 “Do It NOW, Dummy” – Highest priority. Everything's
-                                on fire.</option>
+                            <option value="📅 Someday... Probably">📅 “Someday... Probably” – Medium-low.
+
+                            </option>
+                            <option value="⏰ Soon-ish” – Middle">⏰ “Soon-ish” – Medium.</option>
+                            <option value="🚨 Kinda Important">🚨 “Kinda Important” – Higher.</option>
+                            <option value="🔥 Do It NOW, Dummy">🔥 “Do It NOW, Dummy” – Highest.</option>
                         </select>
                         <button type="submit" id="view_todo">CREATE YOUR TASK!</button>
                     </form>

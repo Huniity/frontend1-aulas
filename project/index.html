@@ -6,12 +6,12 @@
     <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NAH LATER</title>
-    <meta name="todo app" content="todo app website" />
+    <meta name="description" content="todo app website" />
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link preconnect href="https://67f56836913986b16fa476aa.mockapi.io">
 </head>
 
 <body>
@@ -34,42 +34,58 @@
     <main>
         <div class="container">
             <div class="dashboard">
-                <!-- https://weatherwidget.org/ -->
-                <div id="calendar-widget" class="calendar-widget">
-                    <input type="hidden" id="calendar-widget">
-                    <div class="calendar-header">
-                        <button id="prev-month">&lt;</button>
-                        <h3 id="current-month"></h3>
-                        <button id="next-month">&gt;</button>
+                <div class="parent">
+                    <div class="div1"><div class="weather_widget"><div id="ww_e220dca0f1940" v='1.3' loc='auto' a='{"t":"horizontal","lang":"en","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_whr":3,"el_phw":3}'>
+                        More forecasts: <a href="https://oneweather.org/orlando/30_days/" id="ww_e220dca0f1940_u" target="_blank">Orlando weather 30 day
+                        </a></div><script async src="https://app3.weatherwidget.org/js/?id=ww_e220dca0f1940"></script></div></div>
+                    <div class="div2"></div>
+                    <div class="div3"><h2>LAZY DASHBOARD</h2><p id="datetime_title" style="font-size:small; color:rgb(124, 124, 124)"></p></div>
+                    <div class="div4"><canvas id="canva_circle" width="200" height="50"></canvas></div>
+                    <div class="div5">
+                        <div id="calendar-widget" class="calendar-widget">
+                            <input type="hidden" id="calendar-widget">
+                            <div class="calendar-header">
+                                <button id="prev-month">&lt;</button>
+                                <h2 id="current-month"></h2>
+                                <button id="next-month">&gt;</button>
+                            </div>
+                            <div class="calendar-days">
+                                <div class="day-name">Sun</div>
+                                <div class="day-name">Mon</div>
+                                <div class="day-name">Tue</div>
+                                <div class="day-name">Wed</div>
+                                <div class="day-name">Thu</div>
+                                <div class="day-name">Fri</div>
+                                <div class="day-name">Sat</div>
+                            </div>
+                            <div id="calendar-dates" class="calendar-dates"></div>
+                        </div>
                     </div>
-                    <div class="calendar-days">
-                        <div class="day-name">Sun</div>
-                        <div class="day-name">Mon</div>
-                        <div class="day-name">Tue</div>
-                        <div class="day-name">Wed</div>
-                        <div class="day-name">Thu</div>
-                        <div class="day-name">Fri</div>
-                        <div class="day-name">Sat</div>
+                    <div class="div6">
+                        <input type="text" id="search-input" placeholder="Search todos..." />
+                        <button id="resetButton">Reset</button>
                     </div>
-                    <div id="calendar-dates" class="calendar-dates"></div>
-                </div>
-                <input type="text" id="search-input" placeholder="Search todos..." />
-                <button id="resetButton">Reset</button>
-                <div class="stats-counters">
-                    <div class="counter-box">
-                      <h3>Total Tasks</h3>
-                      <div class="counter" id="total-tasks">0</div>
+                    <div class="div7">
+                        <div class="counter-box">
+                            <h3>Total Tasks</h3>
+                            <div class="counter" id="total-tasks">0</div>
+                        </div>
                     </div>
-                    <div class="counter-box">
-                      <h3>Completed</h3>
-                      <div class="counter" id="completed-tasks">0</div>
+                    <div class="div8">
+                        <div class="counter-box">
+                            <h3>Completed</h3>
+                            <div class="counter" id="completed-tasks">0</div>
+                        </div>
                     </div>
-                    <div class="counter-box">
-                      <h3>Categories</h3>
-                      <div class="counter" id="total-categories">0</div>
+                    <div class="div9">
+                        <div class="counter-box">
+                            <h3>Categories</h3>
+                            <div class="counter" id="total-categories">0</div>
+                        </div>
                     </div>
-                  </div>
-                <div id="category-recap" class="recap-container"></div>
+                    <div class="div10"><div id="category-recap" class="recap-container"></div></div>
+                    <div class="div11"></div>
+                </div>     
             </div>
                 <h2 style="text-align: center;">YOUR TASKS</h2>
                 <hr>
@@ -92,7 +108,7 @@
     </main>
     <footer>
         <div class="footer_container">
-            <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
+            <p>Copyright &copy; <span id="copyright_year"></span> <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
         </div>
     </footer>
 </body>
@@ -100,5 +116,10 @@
 <script src="./scripts/dark_mode.js" defer></script>
 <script src="./scripts/utils.js" type="module" defer></script>
 <script src="./scripts/api.js" type="module" defer></script>
-
+<script src="./scripts/canvas.js" defer></script>
+<script src="./scripts/datetime.js" defer></script>
+<!-- <script>
+    const d = new Date();
+    document.getElementById("copyright_year").innerHTML = d.getFullYear();
+    </script> -->
 </html>
