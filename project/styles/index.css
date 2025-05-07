@@ -5,6 +5,7 @@
     --void: #000000;
     --stardust: #FFFFFF1A;
     --accent: #FF4D4D;
+    --main-color: #F1C40F;
     --text: rgba(255, 255, 255, 0.9);
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -37,8 +38,8 @@ body {
 .container {
     max-width: 1200px;
     min-height: calc(100vh - 320.77px);
-    margin: 236.56px auto;
-    /* margin: 0 auto; */
+    margin: 176.56px auto;
+    /* margin: 0 auto;  */
     padding: 0 20px;
     align-items: center;
     justify-content: center;
@@ -364,8 +365,7 @@ body {
     padding: 10px 0 10px 0;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    
+    border-radius: 5px; 
 }
 .modal button {
     width: 100%;
@@ -387,6 +387,49 @@ body {
     color: #000;
     text-decoration: none;
 }
+
+/* ---------------------------- RECAP ----------------------------*/
+.dashboard {
+    background-color: var(--deep-space);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: rgba(255, 255, 255, 0.512) 0px 0px 15px;
+    margin: 75px auto;
+    width: 100%;
+    max-width: 100%;
+    height: 550px;
+}
+#search-input, #calendar-filter, #resetButton {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    background-color: var(--void);
+    border: none;
+    padding: 20px 20px;
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+  
+  .recap-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 1em;
+  }
+  
+  .recap-card {
+    border: 1px solid #ccc;
+    padding: 1em;
+    flex: 1 1 150px;
+    border-radius: 8px;
+    background-color: var(--void);
+  }
+
 /* -------------------------- MEDIA-QUERIES -------------------------*/
 @media (max-width: 1920px) {
     .container {
@@ -505,6 +548,9 @@ body {
         font-size: small;
         padding: 0px;
     }
+    .navbar #dark_mode:hover {
+        background-color: rgba(255, 255, 255, 0);
+    }
     .navbar p {
         display: none;
     }
@@ -536,4 +582,106 @@ body {
       .footer_container {
         font-size: x-small;
       }
+}
+.stats-counters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .counter-box {
+    background-color: var(--void);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 4px 12px;
+    flex: 1 1 200px;
+  }
+  
+  .counter-box h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  
+  .counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text);
+  }
+.calendar-widget {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: var(--void);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    color: var(--text);
+    font-family: 'Viga', sans-serif;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.calendar-header button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calendar-header button:hover {
+    background-color: var(--text);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.day-name {
+    padding: 0.5rem 0;
+    background-color: var(--deep-space);
+    color: white;
+    border-radius: 5px;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-dates .date {
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--void);
+    color: var(--text);
+}
+
+.calendar-dates .date:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.calendar-dates .date.selected {
+    background-color: var(--accent);
+    color: white;
 }
