@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
     <link preconnect href="https://67f56836913986b16fa476aa.mockapi.io">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -111,12 +113,21 @@
 <script src="./scripts/todo_main.js" type="module" defer></script>
 <script src="./scripts/dark_mode.js" defer></script>
 <script src="./scripts/utils.js" type="module" defer></script>
-<script src="./scripts/api.js" type="module" defer></script>
 <script src="./scripts/canvas.js" defer></script>
 <script src="./scripts/datetime.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- <script>
-    const d = new Date();
-    document.getElementById("copyright_year").innerHTML = d.getFullYear();
-    </script> -->
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker
+                .register("/service_worker.js")
+                .then((registration) => {
+                    console.log("Service Worker registered with scope:", registration.scope);
+                })
+                .catch((error) => {
+                    console.error("Service Worker registration failed:", error);
+                });
+        });
+    }
+</script>
 </html>
