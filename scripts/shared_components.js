@@ -1,6 +1,48 @@
 class SharedNavbar extends HTMLElement {
     connectedCallback() {
         const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
+
+        // Check if signedInUser exists
+        if (!signedInUser) {
+            console.warn("No signed-in user found. Rendering default navbar.");
+            this.innerHTML = `
+                <nav class="navbar">
+                    <div class="navbar_pc">
+                        <div class="logo">
+                            <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                        </div>
+                        <div class="nav-icons">
+                            <span onclick="window.location='signin.html'">Sign In</span>
+                            <span onclick="window.location='signup.html'">Sign Up</span>
+                            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+                        </div>
+                    </div>
+                    <div class="navbar_mobile">
+                        <div class="parent_navbar">
+                            <div class="div1_navbar">
+                                <div class="logo">
+                                    <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                                </div>
+                            </div>
+                            <div class="div2_navbar">
+                                <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
+                            </div>
+                            <div class="div3_navbar"><a href="#"><img src="./images/player.png" alt="Guest" class="profile_img_mobile" width="50" height="50"></a></div>
+                            <div class="div4_navbar">Guest</div>
+                            <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
+                        </div>
+                        <div class="nav-icons">
+                            <span onclick="window.location='signin.html'">Sign In</span>
+                            <span onclick="window.location='signup.html'">Sign Up</span>
+                            <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
+                        </div>
+                    </div>
+                </nav>
+            `;
+            return;
+        }
+
+        // Render navbar for signed-in user
         this.innerHTML = `
             <nav class="navbar">
                 <div class="navbar_pc">
@@ -8,13 +50,8 @@ class SharedNavbar extends HTMLElement {
                         <h1><a href="./homepage.html">The Padel Social Club</a></h1>
                     </div>
                     <div class="nav-icons">
-                        ${
-                            signedInUser
-                                ? `<span>Welcome, ${signedInUser.username}!</span>
-                                   <button id="logout-btn">Logout</button>`
-                                : `<span onclick="window.location='signin.html'">Sign In</span>
-                                   <span onclick="window.location='signup.html'">Sign Up</span>`
-                        }
+                        <span>Welcome, ${signedInUser.username}!</span>
+                        <button id="logout-btn">Logout</button>
                         <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
                     </div>
                 </div>
@@ -28,18 +65,12 @@ class SharedNavbar extends HTMLElement {
                         <div class="div2_navbar">
                             <a href="#"><img class="dev_ico1" src="./images/search.png" width="25" height="25"></a>
                         </div>
-                                        
-                        <div class="div3_navbar"><a href="#"><img src="${signedInUser.avatar || null }" alt="${signedInUser.username}" class="profile_img_mobile" width="50" height="50"></a></div>
-                        <div class="div4_navbar">${signedInUser?.username}</div>
+                        <div class="div3_navbar"><a href="#"><img src="${signedInUser.avatar}" alt="${signedInUser.username}" class="profile_img_mobile" width="50" height="50"></a></div>
+                        <div class="div4_navbar">${signedInUser.username}</div>
                         <div class="div5_navbar"><a href="#"><img class="dev_ico1" src="./images/add-post.png" width="25" height="25"></a></div>
                     </div>
                     <div class="nav-icons">
-                        ${
-                            signedInUser
-                                ? `<button id="logout-btn">Logout</button>`
-                                : `<span onclick="window.location='signin.html'">Sign In</span>
-                                   <span onclick="window.location='signup.html'">Sign Up</span>`
-                        }
+                        <button id="logout-btn">Logout</button>
                         <button id="toggleButton" style="width: 100px">Toggle Dark Mode</button>
                     </div>
                 </div>
@@ -47,18 +78,15 @@ class SharedNavbar extends HTMLElement {
         `;
 
         // Add logout functionality if the user is logged in
-        if (signedInUser) {
-            const logoutBtn = this.querySelector("#logout-btn");
-            logoutBtn.addEventListener("click", () => {
-                localStorage.removeItem("signedInUser"); // Remove user data from localStorage
-                window.location.href = "./signin.html"; // Redirect to sign-in page
-            });
-        }
+        const logoutBtn = this.querySelector("#logout-btn");
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem("signedInUser"); // Remove user data from localStorage
+            window.location.href = "./signin.html"; // Redirect to sign-in page
+        });
     }
 }
 
 customElements.define("shared-navbar", SharedNavbar);
-
 
 class SharedFooter extends HTMLElement {
     connectedCallback() {
