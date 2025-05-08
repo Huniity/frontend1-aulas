@@ -275,6 +275,10 @@ body {
 .todo_card {
     list-style: none;
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* push actions to bottom */
+    height: 100%;
 }
 
 .card {
@@ -286,7 +290,13 @@ body {
     width: 300px;
     min-height: 400px;
     max-height: 400px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: center;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 10px;
 }
 
 .card:hover {
@@ -303,7 +313,7 @@ body {
 
 .card-header h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: large;
     color: var(--void);
 }
 
@@ -322,7 +332,9 @@ body {
 }
 
 .card-footer {
-    display: flexbox;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
     justify-self: center;
     gap: 20px;
 }
@@ -334,6 +346,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s ease;
+    
 }
 
 .done_btn {
@@ -462,7 +475,7 @@ body {
   .recap-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 22px;
     margin-bottom: 20px;
 
   }
@@ -865,6 +878,7 @@ body {
     .navbar {
         flex-direction: column;
         align-items: center;
+        
     }
     .navbar .nav-icons a {
         margin-top: 10px;
@@ -876,6 +890,9 @@ body {
     }
     .navbar p {
         display: none;
+    }
+    .navbar .logo {
+        margin-right: 35px;
     }
     .todo_box {
         margin-top: 70px;
@@ -967,6 +984,10 @@ body {
     .todo_box {
         height: auto;
     }
+    .navbar .logo {
+        margin-right: 35px;
+        font-size: x-large;
+    }
 }
 @media (max-width: 320px) {
     .calendar-widget {
@@ -984,5 +1005,9 @@ body {
     }
     .todo_box {
         height: auto;
+    }
+    .navbar .logo {
+        margin-right: 35px;
+        font-size: x-large;
     }
 }

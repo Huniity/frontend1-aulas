@@ -6,12 +6,14 @@
     <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NAH LATER</title>
-    <meta name="todo app" content="todo app website" />
+    <meta name="description" content="todo app website" />
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link preconnect href="https://67f56836913986b16fa476aa.mockapi.io">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -30,6 +32,7 @@
                 <img class="dark_icon" src="images/full-moon.png" alt="Dark Mode Icon" />
                 <img class="light_icon" src="images/sun.png" alt="Light Mode Icon" />
             </button>
+        </div>
     </nav>
     <main>
         <div class="container" style="display: flex; justify-content: center; align-items: center">
@@ -67,13 +70,11 @@
                     </form>
             </div>
     </main>
-    <footer>
-        <div class="footer_container">
-            <p>Copyright &copy; 2025 <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
-        </div>
-    </footer>
+    <shared-footer></shared-footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./scripts/create_task.js" type="module" defer></script>
 <script src="./scripts/dark_mode.js" defer></script>
+<script src="./scripts/shared_components.js" type="module" defer></script>
+
 </html>

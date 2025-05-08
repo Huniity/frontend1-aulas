@@ -32,6 +32,7 @@
                 <img class="dark_icon" src="images/full-moon.png" alt="Dark Mode Icon" />
                 <img class="light_icon" src="images/sun.png" alt="Light Mode Icon" />
             </button>
+        </div>
     </nav>
     <main>
         <div class="container">
@@ -104,11 +105,7 @@
                     </div>
                 </div>
     </main>
-    <footer>
-        <div class="footer_container">
-            <p>Copyright &copy; <span id="copyright_year"></span> <b>Adrien Dejonc</b>. All Rights Reserved.</b></p>
-        </div>
-    </footer>
+    <shared-footer></shared-footer>
 </body>
 <script src="./scripts/todo_main.js" type="module" defer></script>
 <script src="./scripts/dark_mode.js" defer></script>
@@ -116,11 +113,12 @@
 <script src="./scripts/canvas.js" defer></script>
 <script src="./scripts/datetime.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./scripts/shared_components.js" type="module" defer></script>
 <script>
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
             navigator.serviceWorker
-                .register("/service_worker.js")
+                .register("./scripts/service_worker.js")
                 .then((registration) => {
                     console.log("Service Worker registered with scope:", registration.scope);
                 })

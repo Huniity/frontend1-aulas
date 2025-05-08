@@ -23,9 +23,9 @@
 
 ## Bonus
 
-- Implement 1 web component.
-- Also use local storage.
+- Implement 1 web component. ✅
+- Also use local storage. ✅ (For Dark Mode)
 - Configure PWA. ✅
 - Use canvas in some way. ✅
 
-- Apresentar projeto no portfolio desenvolvido em Web Pages
+- Apresentar projeto no portfolio desenvolvido em Web Pages ⌛
