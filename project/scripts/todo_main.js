@@ -122,13 +122,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     const handleDeleteTodo = async (e) => {
         const todoId = e.target.dataset.id;
 
-        if (confirm("Are you sure you want to delete this todo?")) {
+        const isConfirmed = await showConfirmation(
+            "Wanna Delete this task?",
+            "Deleting is permanent. Are you Sure?",
+            "Yes, delete it!",
+            "No, keep it"
+        );
+
+        if (isConfirmed) {
             try {
                 await deleteTodo(todoId);
                 renderTodos();
+                showToast("success", "Todo deleted successfully!");
             } catch (error) {
                 console.error("Error deleting todo:", error);
+                showToast("error", "Failed to delete todo.");
             }
+        } else {
+            showToast("info", "Todo deletion canceled.");
         }
     };
 
@@ -151,8 +162,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 await createTodo(postData);
                 form.reset();
                 renderTodos();
+                showToast("success", "Todo created successfully!");
             } catch (error) {
                 console.error("Error creating todo:", error);
+                showToast("error", "Failed to create todo.");
             }
         });
     }
@@ -187,8 +200,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     await editTodo(todoId, updatedTodo);
                     editModal.style.display = "none";
                     renderTodos();
+                    showToast("success", "Todo updated successfully!");
                 } catch (error) {
                     console.error("Error updating todo:", error);
+                    showToast("error", "Failed to update todo.");
                 }
             };
         } catch (error) {
@@ -209,8 +224,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             await editTodo(todoId, updatedTodo);
             renderTodos();
+
+            if (updatedTodo.is_done) {
+                showToast("success", "Task marked as completed!");
+            } else {
+                showToast("info", "Task marked as pending.");
+            }
         } catch (error) {
             console.error("Error updating todo status:", error);
+            showToast("error", "Failed to update task status.");
         }
     };
 
@@ -249,3 +271,42 @@ function animateCounter(id, target) {
 
     requestAnimationFrame(update);
 }
+
+const showToast = (icon, title) => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        },
+    });
+
+    Toast.fire({
+        icon: icon,
+        title: title,
+        background: "#b0b0b0",
+        color: "#000000",
+        width: "500px",
+    });
+};
+
+const showConfirmation = async (title, text, confirmButtonText = "Yes", cancelButtonText = "No") => {
+    const result = await Swal.fire({
+        title: title,
+        text: text,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText,
+        background: "#b0b0b0",
+        color: "#000000",
+    });
+
+    return result.isConfirmed; // Returns true if the user clicks "Yes"
+};

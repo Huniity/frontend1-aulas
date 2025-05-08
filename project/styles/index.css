@@ -33,13 +33,13 @@ body {
     font-weight: 700;
     font-size: 1.8rem;
     color: white;
+    margin-left: 50px;
 }
 
 .container {
     max-width: 1200px;
     min-height: calc(100vh - 320.77px);
     margin: 176.56px auto;
-    /* margin: 0 auto;  */
     padding: 0 20px;
     align-items: center;
     justify-content: center;
@@ -50,10 +50,9 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 15px 20px;
+    padding: 15px 10px;
     color: white;
     z-index: 1000;
-    width: 100%;
     justify-content: space-between;
     color: white;
     background-color: #151515;
@@ -116,14 +115,14 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: rgba(255, 255, 255, 0.512) 0px 0px 15px;
-    margin: 95px auto;
+    margin: 75px auto;
     width: 100%;
     max-width: 600px;
-    height: 550px;
+    height: 580px;
 }
 ::placeholder {
     color: var(--text);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .todo_box #todo_form input{
     background-color: var(--stardust);
@@ -136,7 +135,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 .todo_box #todo_form select{
     background-color: var(--stardust);
@@ -149,7 +147,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.todo_box #todo_form option{
+    color: var(--void)
 }
 .todo_box #todo_form button{
     background-color: var(--stardust);
@@ -161,7 +161,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 .footer_container {
     color: #fff;
@@ -223,13 +222,32 @@ body {
 .light-mode .todo_box #todo_form button{
     background-color: var(--navbar);
 }
+.light-mode .todo_box #todo_form option{
+    color: var(--text)
+}
 .light-mode .dashboard {
     box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
     background-color: #ffffff;
 }
-.light-mode .dashboard .calendar-widget, .dashboard #search-input, .dashboard .counter-box, .dashboard .recap-card, .dashboard #resetButton, .dashboard .weather_widget{
+.light-mode .dashboard .calendar-widget{
     box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
+.light-mode .dashboard #search-input{
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.light-mode .dashboard .counter-box{
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.light-mode .dashboard .recap-card{
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.light-mode .dashboard #resetButton{
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.light-mode .dashboard .weather_widget{
+    box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
 .light-mode .dashboard .div3 {
     color: var(--void)
 }
@@ -422,7 +440,7 @@ body {
     margin: 75px auto;
     width: 100%;
     max-width: 100%;
-    height: 735px;
+    height: 725px;
 }
 #search-input, #calendar-filter, #resetButton {
     width: 400px;
@@ -453,6 +471,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     background-color: var(--void);
+    width: 144px;
     box-shadow: rgba(247, 247, 247, 0.519) 0px 0px 15px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   }
 
@@ -467,19 +486,17 @@ body {
         
         .div1 { grid-area: 1 / 1 / 2 / 3; }
         .div2 { grid-area: 1 / 3 / 2 / 4; }
-        .div3 { 
-            grid-area: 1 / 4 / 2 / 5;
-            align-content:center;
-            margin-bottom: 25px;
-        }
+        .div3 { grid-area: 1 / 4 / 2 / 5; }
         .div4 { grid-area: 1 / 5 / 2 / 6; }
         .div5 { grid-area: 2 / 1 / 5 / 3; }
         .div6 { grid-area: 5 / 1 / 7 / 3; }
-        .div7 { grid-area: 2 / 3 / 3 / 4; }
-        .div8 { grid-area: 2 / 4 / 3 / 5; }
-        .div9 { grid-area: 2 / 5 / 3 / 6; }
-        .div10 { grid-area: 3 / 3 / 6 / 6; }
-        .div11 { grid-area: 6 / 3 / 7 / 6;}
+        .div7 { 
+            grid-area: 2 / 3 / 3 / 6; 
+            display: flex;
+            gap: 22px;
+        }
+        .div8 { grid-area: 3 / 3 / 6 / 6; }
+        .div9 { grid-area: 6 / 3 / 7 / 6; }
 
     .stats-counters {
         display: flex;
@@ -629,7 +646,7 @@ body {
         row-gap: 0px;
     }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1125px) {
     .container {
         min-height: calc(100vh - 296.77px);
     }
@@ -660,6 +677,75 @@ body {
         column-gap: 30px;
         row-gap: 0px;
     }
+    .parent {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-row-gap: 20px;
+        height: auto;
+    }
+    .div1 {
+        grid-area: 2 / 1 / 2 / 3;
+        justify-self: center;
+        grid-column: span 1/3;
+        width: auto;
+    }
+    .div2 {
+        display: none;
+    }
+    .div3 {
+        grid-area: 1 / 1 / 1 / 3;
+        justify-self: center;
+        grid-column: span 1/3;
+        width: auto;
+    }
+    .div4 {
+        display: none;
+    }
+    .div5 {
+        grid-area: 5 / 1 / 5 / 3;
+        grid-column: span 1/3;
+        justify-self: center;
+        width: auto;
+    }
+    .div6 {
+        grid-area: 6 / 1 / 6 / 3;
+        justify-self: center;
+        grid-column: span 3;
+        max-width: 400px;
+        width: auto;
+    }
+    .div7 {
+        grid-area: 3 / 1 / 3 / 1;
+        grid-column: span 3;
+        justify-content: center;
+        width: auto;
+    }
+    .div8 {
+        grid-area: 4 / 1 / 4 / 3;
+        justify-self: center;
+        grid-column: span 1/3;
+        width: auto;
+    }
+    .div9 {
+        display: none;
+    }
+    .dashboard {
+        height: auto;
+    }
+    .todo_box {
+        height: auto;
+    }
+    .dashboard .counter-box {
+        margin: 0;
+    }
+    .recap-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+
 }
 @media (max-width: 768px) {
     .container {
@@ -692,6 +778,83 @@ body {
         column-gap: 30px;
         row-gap: 0px;
     }
+    .light-mode #dark_mode .dark_icon  {
+        display: inline;
+        max-width: 35px;
+    }
+    .dark-mode #dark_mode .light_icon  {
+        display: inline;
+        max-width: 35px;
+    }
+    #dark_mode .text {
+        display: none;
+      }
+    .dashboard {
+        height: auto;
+    }
+    .todo_box {
+        height: auto;
+    }
+    .parent {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-row-gap: 20px;
+        height: auto;
+    }
+    .div1 {
+        grid-area: 2 / 1 / 2 / 3;
+        justify-self: center;
+        grid-column: span 1/3;
+        width: auto;
+    }
+    .div2 {
+        display: none;
+    }
+    .div3 {
+        grid-area: 1 / 1 / 1 / 3;
+        justify-self: center;
+        grid-column: span 1/3;
+        width: auto;
+    }
+    .div4 {
+        display: none;
+    }
+    .div5 {
+        grid-area: 5 / 1 / 5 / 3;
+        grid-column: span 1/3;
+        justify-self: center;
+        width: auto;
+    }
+    .div6 {
+        grid-area: 6 / 1 / 6 / 3;
+        justify-self: center;
+        grid-column: span 3;
+        max-width: 400px;
+        width: auto;
+    }
+    .div7 {
+        grid-area: 3 / 1 / 3 / 1;
+        grid-column: span 3;
+        justify-content: center;
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .div8 {
+        grid-area: 4 / 1 / 4 / 3;
+        justify-self: center;
+        grid-column: span 3;
+        width: auto;
+    }
+    .div9 {
+        grid-area: 3 / 3 / 3 / 3;
+        justify-self: left;
+        width: auto;
+    }
+    
 }
 @media (max-width: 450px) {
     .container {
@@ -740,4 +903,84 @@ body {
       .footer_container {
         font-size: x-small;
       }
+      .dashboard {
+        height: auto;
+        margin: 0 auto;
+    }
+    .todo_box {
+        height: auto;
+    }
+    .div1 {
+        display: none;
+    }
+    .div8{
+        grid-area: 4 / 1 / 4 / 3;
+        justify-self: center;
+        grid-column: span 3;
+        width: auto;
+    }
+    .dashboard #search-input, #calendar-filter, #resetButton {
+        width: 320px;
+    }
+    .div6 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;;
+    }
+    .calendar-widget {
+        width: 320px;
+    }
+}
+@media (max-width: 400px) {
+    .calendar-widget {
+        width: 290px;
+    }
+    .calendar-dates {
+        gap: 0;
+    }
+    .calendar-header {
+        width: 260px;
+    }
+    .dashboard #search-input, #calendar-filter, #resetButton {
+        width: 260px;
+    }
+    .todo_box {
+        height: auto;
+    }
+}
+@media (max-width: 360px) {
+    .calendar-widget {
+        width: 250px;
+    }
+    .calendar-dates .date{
+        padding: 0;
+        margin: 0;
+    }
+    .calendar-header {
+        width: 220px;
+    }
+    .dashboard #search-input, #calendar-filter, #resetButton {
+        width: 220px;
+    }
+    .todo_box {
+        height: auto;
+    }
+}
+@media (max-width: 320px) {
+    .calendar-widget {
+        width: 230px;
+    }
+    .calendar-dates .date{
+        padding: 0;
+        margin: 0;
+    }
+    .calendar-header {
+        width: 200px;
+    }
+    .dashboard #search-input, #calendar-filter, #resetButton {
+        width: 200px;
+    }
+    .todo_box {
+        height: auto;
+    }
 }

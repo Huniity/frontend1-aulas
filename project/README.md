@@ -17,7 +17,7 @@
 3. Use at least one native javascript API (Geolocation, DateTime, etc). ✅
 4. Form to create and edit todo items, with validation. ✅
 5. Use at least one external library (An ui component library for example). ✅ 
-6. Responsive
+6. Responsive ✅
 7. Generate lighthouse report with all 4 metrics on the green.
 8. Online on github pages. ✅
 
