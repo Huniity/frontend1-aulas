@@ -21,20 +21,23 @@
 
 .contact-info p.email{
     margin-left: 0;
+
 }
 
 .contact-details {
+    justify-content: flex-end;
+    flex-direction: column;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 25px;
     column-gap: 50px;
 }
 
 .contact-column {
-    margin-left: 0%;
-   margin-bottom: 50px;
+   margin-left: 0%;
+   margin-bottom: 70px;
+   flex-direction: column;
+   display: flex;
 }
-
 .social-icons {
     display: flex;
     gap: 10px;
@@ -75,20 +78,38 @@
 }
 
 .contact-form button {
-    background: linear-gradient(180deg, #06cef1, #000001);
-    border: none;
-    padding: 12px 20px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 1.5rem 3rem;
+    border: 2px solid var(--neon-blue);
+    border-radius: 3px;
+    background: var(--deep-space);
+    color: var(--neon-blue);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
 }
 
-.contact-form button:hover {
-    transform: scale(1.1);
+.contact-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
 }
+
+.contact-form button:hover::before {
+    left: 100%;
+}
+
 
 .card {
     color: white;
@@ -189,6 +210,11 @@ form p {
 
     .contact-column {
         margin-left: 75px;    
+    }
+    .dev_ico1 {
+        filter: grayscale(0%);
+        text-shadow: 0px 0px 0px rgb(0, 55, 255), 0 0 1em rgb(0, 247, 255), 0 0 0.2em rgb(0, 255, 247);
+        filter: drop-shadow(0 0 0.45rem rgb(0, 247, 255));
     }
 
 }

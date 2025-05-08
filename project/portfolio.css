@@ -101,7 +101,7 @@ body {
 
 #particles-js {
     position: absolute;
-    width: 100%;
+    width: 90%;
     height: 100%;
     z-index: -1;
 }
@@ -132,7 +132,7 @@ body {
 .cyber-button {
     padding: 1.5rem 3rem;
     border: 2px solid var(--neon-blue);
-    background: transparent;
+    background: var(--deep-space);
     color: var(--neon-blue);
     font-weight: 600;
     position: relative;
@@ -325,5 +325,28 @@ body {
     
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 480px){
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-tags {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+    }
+    .project-tgs-name {
+        display: none;
     }
 }
