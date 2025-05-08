@@ -231,9 +231,11 @@ body {
 }
 .light-mode .dashboard .calendar-widget{
     box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    background-color: var(--void);
 }
 .light-mode .dashboard #search-input{
     box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    background-color: var(--void);
 }
 .light-mode .dashboard .counter-box{
     box-shadow: rgba(1, 2, 5, 0.25) 0px 0px 8px 8px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
