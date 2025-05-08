@@ -2,7 +2,7 @@ class SharedNavbar extends HTMLElement {
     connectedCallback() {
         const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
 
-        // Check if signedInUser exists
+
         if (!signedInUser) {
             console.warn("No signed-in user found. Rendering default navbar.");
             this.innerHTML = `
@@ -42,7 +42,7 @@ class SharedNavbar extends HTMLElement {
             return;
         }
 
-        // Render navbar for signed-in user
+
         this.innerHTML = `
             <nav class="navbar">
                 <div class="navbar_pc">
@@ -77,11 +77,11 @@ class SharedNavbar extends HTMLElement {
             </nav>
         `;
 
-        // Add logout functionality if the user is logged in
+
         const logoutBtn = this.querySelector("#logout-btn");
         logoutBtn.addEventListener("click", () => {
-            localStorage.removeItem("signedInUser"); // Remove user data from localStorage
-            window.location.href = "./signin.html"; // Redirect to sign-in page
+            localStorage.removeItem("signedInUser"); 
+            window.location.href = "./signin.html";
         });
     }
 }

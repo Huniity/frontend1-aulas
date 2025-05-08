@@ -1,6 +1,7 @@
 import { getUsers, createUser } from "../lib/mock_api.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const userForm = document.querySelector("#match-form");
     const signedInUser = JSON.parse(localStorage.getItem("signedInUser"));
     if (!signedInUser) {
         const usersContainer = document.querySelector('.users-container');
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <h2>${signedInUser.f_name} ${signedInUser.l_name}</h2>
                 <p>@${signedInUser.username}</p>
                 <p>${signedInUser.bio}</p>
-                ${!onProfilePage ? '<button><a href="./profile.html">My Profile</a></button>' : ''}
+                ${!onProfilePage ? '<a href="./profile.html"><button>My Profile</button></a>' : ''}
                 <p>Main Hand: ${signedInUser.main_hand}</p>
                 <div class="skills">
                     Tags:
@@ -40,15 +41,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
     }
         
-    
 
-    try {
-        const users = await getUsers();
-        users.forEach(user => renderUser(user));
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        usersContainer.innerHTML = `<p>Failed to load users. Please try again later.</p>`;
-    }
+    // try {
+    //     const users = await getUsers();
+    //     users.forEach(user => renderUser(user));
+    // } catch (error) {
+    //     console.error("Error fetching users:", error);
+    //     usersContainer.innerHTML = `<p>Failed to load users. Please try again later.</p>`;
+    // }
 
     userForm.addEventListener("submit", async (e) => {
         e.preventDefault();
