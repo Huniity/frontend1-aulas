@@ -1,8 +1,18 @@
+<img src="./images/favicon.ico" width="50"/>
+
 ### **Titulo do website:** The Padel Social Club
 
 <br>
 
 ### **Descrição do website:** A Padel Social Network where users can share about their journey
+
+<br>
+<img src="./padel_social_club_ss.png" width="350"/>
+<img src="./padel_social_club_ss2.png" width="350"/>
+<img src="./padel_social_club_ss3.png" width="350"/>
+<img src="./padel_social_club_ss4.png" width="350"/>
+<img src="./padel_social_club_ss5.png" width="350"/>
+<img src="./padel_social_club_ss6.png" width="350"/>
 
 <br>
 
@@ -22,6 +32,9 @@
 
 ## Bonus
 
-Implementação dos requisitos ao contexto do projeto em si ✅
+Implementação dos requisitos ao contexto do projeto em si ✅ \
+    `Check Above Requirements` 
 
-Apresentar projeto no portfolio desenvolvido em Web Pages ✅
+Apresentar projeto no portfolio desenvolvido em Web Pages ✅ \
+    `In Navigator Check` \
+    [here](https://huniity.github.io/frontend1-aulas/homepage.html) - GitHub WebPage Portfolio
