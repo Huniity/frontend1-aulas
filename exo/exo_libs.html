@@ -11,39 +11,157 @@
 </head>
 
 <body>
-    <div class="splide">
-        <h1 style="text-align: center;">SPLIDE CAROUSSEL</h1>
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide">
-                    <p style="text-align: center">BABOLAT VIPER (ATTACK)</p><img src="../images/babo.png"
-                        style="width: 350px; height: auto">
-                </li>
-                <li class="splide__slide">
-                    <p style="text-align: center">ADIDAS METALBONE (ATTACK)</p><img src="../images/metalbone.png"
-                        style="width: 350px; height: auto">
-                </li>
-                <li class="splide__slide">
-                    <p style="text-align: center">ADIDAS METALBONE SIGNATURE EDITION (ATTACK)</p><img
-                        src="../images/metalbone2.png" style="width: 350px; height: auto">
-                </li>
-                <li class="splide__slide">
-                    <p style="text-align: center">NOX AT 10k (CONTROL)</p><img src="../images/nox.png"
-                        style="width: 350px; height: auto">
+    <ul class="tab-container radio">
+        <li>
+            <input class="tab-toggle" id="tab-1" type="radio" name="toggle" checked />
+            <label data-title="Tab 1" class="tab l-b" for="tab-1">Exo 2</label>
+            <ul class="tab-content-container">
+                <li class="tab-content" style="margin-top: 5rem;">
+                    <form id="name-form">
+                        <button type="submit">Save My Name</button>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <hr>
+                    </form>
+                    <div class="controls">
+                        <button id="toggle-dark">Dark Mode</button>
+                        <div id="my-mode"></div>
+                    </div>
                 </li>
             </ul>
-        </div>
-        <!-- Add the progress bar element -->
-        <div class="my-slider-progress">
-            <div class="my-slider-progress-bar"></div>
-        </div>
-    </div>
-    <div class="sweetalert2" style="text-align: center; margin-top: 20px;">
-        <button id="success_fire" aria-label="SUCESS">SUCESS</button>
-        <button id="error_fire" aria-label="ERROR">ERROR</button>
-        <button id="info_fire" aria-label="INFO">INFO</button>
-        <button id="warning_fire" aria-label="WARNING">WARNING</button>
-    </div>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-2" type="radio" name="toggle" />
+            <label class="tab" for="tab-2">Exo3</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    <h2>Student Grades</h2>
+                    <label>
+                        Name:
+                        <input type="text" id="name_2" />
+                    </label>
+                    <label>
+                        Grade:
+                        <input type="number" id="grade" />
+                    </label>
+                    <button id="save">Save</button>
+                    <ul id="student-list"></ul>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-3" type="radio" name="toggle" />
+            <label class="tab" for="tab-3">Exo 4</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    <h2>Posts</h2>
+                    <button id="get">Load Again</button>
+                    <button id="post">Fake Post</button>
+                    <button id="abort">Abort Controller</button>
+                    <ul id="post-list"></ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-4" type="radio" name="toggle" />
+            <label class="tab" for="tab-4">Exo5</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    <div class="section">
+                        <h2>Location</h2>
+                        <p>Lat: <span id="latitude"></span></p>
+                        <p>Long: <span id="longitude"></span></p>
+                    </div>
+                    <div class="section">
+                        <h2>DateTime</h2>
+                        <p id="datetime"></p>
+                    </div>
+                    <div class="section">
+                        <h2>Clipboard</h2>
+                        <input type="text" id="textToCopy" value="textToCopy" readonly />
+                        <button id="copyButton">Copy</button>
+                    </div>
+                    <div class="section">
+                        <button id="fullscreenButton">Fullscreen</button>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-5" type="radio" name="toggle" />
+            <label class="tab" for="tab-5">Exo9</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    <div class="splide">
+                        <h1 style="text-align: center;">SPLIDE CAROUSSEL</h1>
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <p style="text-align: center">BABOLAT VIPER (ATTACK)</p><img
+                                        src="../images/babo.png" style="width: 350px; height: auto">
+                                </li>
+                                <li class="splide__slide">
+                                    <p style="text-align: center">ADIDAS METALBONE (ATTACK)</p><img
+                                        src="../images/metalbone.png" style="width: 350px; height: auto">
+                                </li>
+                                <li class="splide__slide">
+                                    <p style="text-align: center">ADIDAS METALBONE SIGNATURE EDITION (ATTACK)</p><img
+                                        src="../images/metalbone2.png" style="width: 350px; height: auto">
+                                </li>
+                                <li class="splide__slide">
+                                    <p style="text-align: center">NOX AT 10k (CONTROL)</p><img src="../images/nox.png"
+                                        style="width: 350px; height: auto">
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Add the progress bar element -->
+                        <div class="my-slider-progress">
+                            <div class="my-slider-progress-bar"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-6" type="radio" name="toggle" />
+            <label class="tab" for="tab-6">Exo9_Toast</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                <div class="sweetalert2" style="text-align: center; margin-top: 20px;">
+                    <button id="success_fire" aria-label="SUCESS">SUCESS</button>
+                    <button id="error_fire" aria-label="ERROR">ERROR</button>
+                    <button id="info_fire" aria-label="INFO">INFO</button>
+                    <button id="warning_fire" aria-label="WARNING">WARNING</button>
+                </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-7" type="radio" name="toggle" />
+            <label class="tab" for="tab-7">Exo8</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input class="tab-toggle" id="tab-8" type="radio" name="toggle" />
+            <label class="tab" for="tab-8">Exo9</label>
+            <ul class="tab-content-container">
+                <li class="tab-content">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur.
+                </li>
+            </ul>
+        </li>
+    </ul>
     <style>
         body {
             background-color: #262626;
@@ -102,79 +220,127 @@
             width: 0%;
             transition: width 0.3s ease-in-out;
         }
+
+        body,
+        html {
+            margin: 0;
+            font-family: arial;
+            height: 100vh;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        .tab-container {
+            list-style-type: none;
+            padding: 0;
+            margin: 60px auto;
+            min-width: 1000px;
+
+            position: relative;
+            background: #ffffff;
+
+            &:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .tab-content-container {
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                height: 0;
+                opacity: 0;
+                overflow: hidden;
+                line-height: 22px;
+                background: #444444;
+                position: absolute;
+                top: 84px;
+                padding: 0px 40px 0 20px;
+                border: 2px solid #181818;
+                border-top: 0;
+                box-shadow: 0 5px 5px -5px #333;
+
+                .tab-content {
+                    opacity: 0;
+                    padding: 15px 0;
+                    min-width: 1000px;
+                    min-height: 800px;
+                    transition: opacity 0.1s ease-in;
+                }
+            }
+
+            .tab {
+                outline: 0;
+                float: left;
+                cursor: pointer;
+                opacity: 1;
+                width: 25%;
+                line-height: 40px;
+                display: block;
+                margin: 0;
+                position: relative;
+                background: #181818;
+                color: #fff;
+                text-align: center;
+                border-top: 2px solid #181818;
+                border-right: 2px solid #181818;
+
+                &.l-b {
+                    border-left: 2px solid #181818;
+                }
+
+                &:hover {
+                    background: #000000;
+                }
+            }
+
+            .tab-toggle {
+                display: none;
+
+                &.active+.tab,
+                &:checked+.tab {
+                    background: #fff;
+                    color: #333;
+                }
+
+                &.active~.tab-content-container,
+                &:checked~.tab-content-container {
+                    height: auto;
+                    opacity: 1;
+
+                    .tab-content {
+                        opacity: 1;
+
+                        label {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const splide = new Splide('.splide', {
-                type: 'loop', // Loop through slides
-                perPage: 1, // Show one slide at a time
-                autoplay: true, // Enable autoplay
-                interval: 3000, // 3 seconds per slide
-                pauseOnHover: false, // Pause autoplay on hover
-                pagination: false, // Enable pagination dots
-                arrows: false, // Enable navigation arrows
-            });
 
-            const progressBar = document.querySelector('.my-slider-progress-bar');
-            splide.on('mounted move', function () {
-                const end = splide.Components.Controller.getEnd() + 1;
-                const current = splide.index + 1;
-                const percentage = (current / end) * 100;
-                progressBar.style.width = `${percentage}%`;
-            });
-
-            splide.mount();
-        });
     </script>
     <script>
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        document
-            .getElementById("success_fire")
-            ?.addEventListener("click", () => {
-                Toast.fire({
-            icon: "success",
-            title: "This is a successful alert!"
-            });
-            });
-
-        document
-            .getElementById("info_fire")
-            ?.addEventListener("click", () => {
-                Toast.fire({
-            icon: "info",
-            title: "This is an info alert!"
-            });
-            });
-
-        document
-            .getElementById("error_fire")
-            ?.addEventListener("click", () => {
-                Toast.fire({
-            icon: "error",
-            title: "This is an error alert!"
-            });
-            });
-
-        document
-            .getElementById("warning_fire")
-            ?.addEventListener("click", () => {
-                Toast.fire({
-            icon: "warning",
-            title: "This is a warning alert!"
-            });
-            });
+        
     </script>
 </body>
+<script src="./exo2.js" defer></script>
+<script src="./exo3.js" defer></script>
+<script src="./exo4.js" defer></script>
+<script src="./exo6.js" defer></script>
+<script src="./exo9.js" defer></script>
+<script src="./exo9_toast.js" defer></script>
 
 </html>

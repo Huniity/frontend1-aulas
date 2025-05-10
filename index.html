@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Padel Social Club</title>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
@@ -63,26 +64,79 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-icons">
-            Ready for the Match?
-            <p><a href="./homepage.html" style="text-decoration: none; color: white">> Click to Join the club! <</a></p>
-        </div>
-    </nav>
-    <main>
-        <header>
+    <shared-navbar></shared-navbar>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="users-container"></div>
+        </aside>
 
-        </header>
-        <div class="container">
-            <div class="welcome">
-                <p class="welcome_title">The Padel Social Club</p>
-                <div class="large-center">
-                    <div class="large-ball"></div>
-                    <div class="large-shadow"></div>
+
+        <main class="feed">
+            <shared-top-menu></shared-top-menu>
+            <hr>
+            <h3 style="text-align: center;">How did you perform in your last game?</h3>
+            <form id="match-form">
+                <input type="text" id="post-title" placeholder="Title" required />
+                <input type="text" id="post-match" placeholder="Team 1 VS Team 2" required />
+                <input type="text" id="post-result" placeholder="Result (e.g., 6/2 - 2/6 - 7/2)" required />
+                <select aria-label="post-match-result" id="post-match-result" required>
+                    <option value="">End Result</option>
+                    <option value="🏆">🏆 Victory</option>
+                    <option value="💔">💔 Loss</option>
+                </select>
+                <button type="submit">Send your results!</button>
+                <br><br>
+                <hr>
+                <br>
+            </form>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Edit Match</h2>
+                    <form id="edit-match-form">
+                        <input type="text" id="edit-match" placeholder="Team 1 VS Team 2" required />
+                        <input type="text" id="edit-result" placeholder="Result (ex: 6/2 - 2/6 - 7/2 (6/6))" required />
+                        <select id="edit-match_result" required>
+                            <option value="">End Result</option>
+                            <option value="🏆">🏆 Victory</option>
+                            <option value="💔">💔 Loss</option>
+                        </select>
+                        <button type="submit">Save Changes</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </main>
+            <div id="match-list"></div>
+            
+        </main>
+
+
+        <aside class="right-sidebar">
+            <h2>Recent Activity 🎯</h2>
+            <p>(Real Time update not available yet)</p>
+            <br>
+            <ul>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Chris Liked your Post <span> (5 min ago)</span></p>
+                </li>
+                <li>
+                    <img class="profile_img" src="./images/user.png" alt="User">
+                    <p>Sarah Like your Post <span> (10 min ago)</span></p>
+                </li>
+            </ul>
+            <hr>
+            <h2>Padel Players</h2>
+            <div id="players-container">
+                <!-- Player data will be dynamically inserted here -->
+            </div>
+        </aside>
+    </div>
+    <shared-footer></shared-footer>
+    <script src="./scripts/shared_components.js" type="module" defer></script>
+    <script src="./scripts/dark_light_toggle.js" defer></script>
+    <script src="./lib/padel_api.js" defer></script>
+    <script src="./scripts/posts_module.js" type="module" defer></script>
+    <script src="./scripts/users_module.js" type="module" defer></script>
 </body>
 <script>
     if ("serviceWorker" in navigator) {

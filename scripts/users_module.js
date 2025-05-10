@@ -137,7 +137,7 @@ if(window.location.pathname === '/signin.html'){
                     width: "500px"
                 });
                 setTimeout(() => {
-                    window.location.href = "./homepage.html";
+                    window.location.href = "./index.html";
                 }, 3000);
             } else {
                 Toast.fire({
@@ -230,7 +230,7 @@ if(window.location.pathname === '/profile.html'){
                 footer: '<a href="./signin.html" style="color: white; text-decoration: underline">Sign in</a> or <a href="./signup.html" style="color: white;  text-decoration: underline">Sign up</a>',
                 width: "600px",
                 theme: "dark",
-                confirmButtonText: '<a href="./homepage.html" style="color: #181818; font-family: Anton">Back to Homepage</a>',
+                confirmButtonText: '<a href="./index.html" style="color: #181818; font-family: Anton">Back to Homepage</a>',
                 confirmButtonColor: '#f1c40f',
                 allowOutsideClick: false,
                 allowEscapeKey: false,

@@ -47,7 +47,7 @@ class SharedNavbar extends HTMLElement {
             <nav class="navbar">
                 <div class="navbar_pc">
                     <div class="logo">
-                        <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                        <h1><a href="./index.html">The Padel Social Club</a></h1>
                     </div>
                     <div class="nav-icons">
                         <span>Welcome, ${signedInUser.username}!</span>
@@ -59,7 +59,7 @@ class SharedNavbar extends HTMLElement {
                     <div class="parent_navbar">
                         <div class="div1_navbar">
                             <div class="logo">
-                                <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                                <h1><a href="./index.html">The Padel Social Club</a></h1>
                             </div>
                         </div>
                         <div class="div2_navbar">
@@ -98,7 +98,7 @@ class SharedFooter extends HTMLElement {
             </div>
             <div class="footer_container_mobile">
                 <div class="parent_footer">
-                    <div class="div1_footer"><a href="./homepage.html"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
+                    <div class="div1_footer"><a href="./index.html"><img class="dev_ico1" src="./images/home.png" width="25" height="25"></a></div>
                     <div class="div2_footer"><a href="./marketplace.html"><img class="dev_ico1" src="./images/marketplace.png" width="25" height="25"></a></div>
                     <div class="div3_footer"><a href="./padel_premier.html"><img class="dev_ico1" src="./images/padel_menu.png" width="25" height="25"></a></div>
                     <div class="div4_footer"><a href="./courts.html"><img class="dev_ico1" src="./images/tennis-court (1).png" width="25" height="25"></a></div>
@@ -121,7 +121,7 @@ class SharedTopMenu extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <div class="feed-menu">
-                <span><a href="./homepage.html">The Social 🌐</a></span>
+                <span><a href="./index.html">The Social 🌐</a></span>
                 <span><a href="./marketplace.html">The Market 🛒</a></span>
                 <span><a href="./courts.html">The Courts 🎾</a></span>
                 <span><a href="./padel_premier.html">The Premier 🏆</a></span>
