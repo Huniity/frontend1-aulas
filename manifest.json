@@ -1,0 +1,19 @@
+{
+    "name": "The Padel Social Club",
+    "short_name": "Padel S Club",
+    "theme_color": "#1c1c1c",
+    "background_color": "#1c1c1c",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/frontend1-aulas/index.html",
+    "description": "A Padel Social Network to keep in touch with Padel Players",
+    "lang": "en-US",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "images/favicon.ico",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
