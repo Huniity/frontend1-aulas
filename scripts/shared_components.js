@@ -9,7 +9,7 @@ class SharedNavbar extends HTMLElement {
                 <nav class="navbar">
                     <div class="navbar_pc">
                         <div class="logo">
-                            <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                            <h1><a href="./index.html">The Padel Social Club</a></h1>
                         </div>
                         <div class="nav-icons">
                             <span onclick="window.location='signin.html'">Sign In</span>
@@ -21,7 +21,7 @@ class SharedNavbar extends HTMLElement {
                         <div class="parent_navbar">
                             <div class="div1_navbar">
                                 <div class="logo">
-                                    <h1><a href="./homepage.html">The Padel Social Club</a></h1>
+                                    <h1><a href="./index.html">The Padel Social Club</a></h1>
                                 </div>
                             </div>
                             <div class="div2_navbar">
